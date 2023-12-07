@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>clash on Rural Blog</title>
+    <link>https://ruralbee.github.io/tags/clash/</link>
+    <description>Recent content in clash on Rural Blog</description>
+    <image>
+      <title>Rural Blog</title>
+      <url>https://ruralbee.github.io/papermod-cover.png</url>
+      <link>https://ruralbee.github.io/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Thu, 07 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://ruralbee.github.io/tags/clash/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2023年11月科学上网VPN机场推荐</title>
+      <link>https://ruralbee.github.io/posts/vpn/airplane/</link>
+      <pubDate>Thu, 07 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://ruralbee.github.io/posts/vpn/airplane/</guid>
+      <description>三个性价比高的机场，适合需要轻度科学上网人群</description>
+    </item>
+    
+    <item>
+      <title>2023年windows,Mac科学上网</title>
+      <link>https://ruralbee.github.io/posts/vpn/magic_internet/</link>
+      <pubDate>Thu, 07 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://ruralbee.github.io/posts/vpn/magic_internet/</guid>
+      <description>PC端科学上网教程</description>
+    </item>
+    
+    <item>
+      <title>Clash Verge使用教程</title>
+      <link>https://ruralbee.github.io/posts/vpn/clashverge/</link>
+      <pubDate>Thu, 07 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://ruralbee.github.io/posts/vpn/clashverge/</guid>
+      <description>Clash Verge的详细使用教程，包含浏览器插件联动，cmd全局代理配置</description>
+    </item>
+    
+  </channel>
+</rss>
