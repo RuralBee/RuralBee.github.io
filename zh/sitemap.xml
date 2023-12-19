@@ -3,22 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://ruralbee.github.io/posts/vpn/airplane/</loc>
-    <lastmod>2023-12-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://ruralbee.github.io/posts/vpn/magic_internet/</loc>
-    <lastmod>2023-12-07T00:00:00+00:00</lastmod>
+    <lastmod>2023-12-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ruralbee.github.io/tags/clash/</loc>
-    <lastmod>2023-12-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://ruralbee.github.io/posts/vpn/clashverge/</loc>
-    <lastmod>2023-12-07T00:00:00+00:00</lastmod>
+    <lastmod>2023-12-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ruralbee.github.io/posts/</loc>
-    <lastmod>2023-12-07T00:00:00+00:00</lastmod>
+    <lastmod>2023-12-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ruralbee.github.io/</loc>
-    <lastmod>2023-12-07T00:00:00+00:00</lastmod>
+    <lastmod>2023-12-18T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="profile"
@@ -31,7 +25,7 @@
                 />
   </url><url>
     <loc>https://ruralbee.github.io/tags/</loc>
-    <lastmod>2023-12-07T00:00:00+00:00</lastmod>
+    <lastmod>2023-12-18T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="profile"
@@ -44,9 +38,45 @@
                 />
   </url><url>
     <loc>https://ruralbee.github.io/tags/vpn/</loc>
-    <lastmod>2023-12-07T00:00:00+00:00</lastmod>
+    <lastmod>2023-12-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ruralbee.github.io/posts/vpn/</loc>
+    <lastmod>2023-12-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ruralbee.github.io/tags/ai/</loc>
+    <lastmod>2023-12-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ruralbee.github.io/tags/ctf/</loc>
+    <lastmod>2023-12-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ruralbee.github.io/posts/ctf/pwn_stack/</loc>
+    <lastmod>2023-12-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ruralbee.github.io/posts/other/hugo/</loc>
+    <lastmod>2023-12-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ruralbee.github.io/tags/pwn/</loc>
+    <lastmod>2023-12-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ruralbee.github.io/posts/ai/stablediffusion/</loc>
+    <lastmod>2023-12-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ruralbee.github.io/tags/%E5%86%85%E7%BD%91/</loc>
+    <lastmod>2023-12-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ruralbee.github.io/posts/ctf/ctf_intranet/</loc>
+    <lastmod>2023-12-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ruralbee.github.io/tags/%E4%BA%91%E5%AE%89%E5%85%A8/</loc>
+    <lastmod>2023-12-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ruralbee.github.io/posts/ctf/ctf_cloudsec/</loc>
+    <lastmod>2023-12-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ruralbee.github.io/posts/vpn/magic_internet/</loc>
+    <lastmod>2023-12-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ruralbee.github.io/posts/vpn/clashverge/</loc>
     <lastmod>2023-12-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ruralbee.github.io/archives/</loc>

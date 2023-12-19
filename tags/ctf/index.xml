@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>CTF on Rural Blog</title>
+    <link>https://ruralbee.github.io/tags/ctf/</link>
+    <description>Recent content in CTF on Rural Blog</description>
+    <image>
+      <title>Rural Blog</title>
+      <url>https://ruralbee.github.io/papermod-cover.png</url>
+      <link>https://ruralbee.github.io/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Sat, 16 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://ruralbee.github.io/tags/ctf/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CTF Pwn二进制总结</title>
+      <link>https://ruralbee.github.io/posts/ctf/pwn_stack/</link>
+      <pubDate>Sat, 16 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://ruralbee.github.io/posts/ctf/pwn_stack/</guid>
+      <description>pwn栈部分内容</description>
+    </item>
+    
+    <item>
+      <title>内网渗透总结</title>
+      <link>https://ruralbee.github.io/posts/ctf/ctf_intranet/</link>
+      <pubDate>Sat, 16 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://ruralbee.github.io/posts/ctf/ctf_intranet/</guid>
+      <description>内网安全</description>
+    </item>
+    
+    <item>
+      <title>云安全总结</title>
+      <link>https://ruralbee.github.io/posts/ctf/ctf_cloudsec/</link>
+      <pubDate>Sat, 16 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://ruralbee.github.io/posts/ctf/ctf_cloudsec/</guid>
+      <description>云安全</description>
+    </item>
+    
+  </channel>
+</rss>
