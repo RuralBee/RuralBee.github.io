@@ -11,6 +11,51 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 07 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://ruralbee.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 18 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://ruralbee.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CTF Pwn二进制总结</title>
+      <link>https://ruralbee.github.io/posts/ctf/pwn_stack/</link>
+      <pubDate>Sat, 16 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://ruralbee.github.io/posts/ctf/pwn_stack/</guid>
+      <description>pwn栈部分内容</description>
+    </item>
+    
+    <item>
+      <title>Hugo静态网站搭建</title>
+      <link>https://ruralbee.github.io/posts/other/hugo/</link>
+      <pubDate>Sat, 16 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://ruralbee.github.io/posts/other/hugo/</guid>
+      <description>papermod模板</description>
+    </item>
+    
+    <item>
+      <title>Stable Diffusion安装</title>
+      <link>https://ruralbee.github.io/posts/ai/stablediffusion/</link>
+      <pubDate>Sat, 16 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://ruralbee.github.io/posts/ai/stablediffusion/</guid>
+      <description>windows安装</description>
+    </item>
+    
+    <item>
+      <title>内网渗透总结</title>
+      <link>https://ruralbee.github.io/posts/ctf/ctf_intranet/</link>
+      <pubDate>Sat, 16 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://ruralbee.github.io/posts/ctf/ctf_intranet/</guid>
+      <description>内网安全</description>
+    </item>
+    
+    <item>
+      <title>云安全总结</title>
+      <link>https://ruralbee.github.io/posts/ctf/ctf_cloudsec/</link>
+      <pubDate>Sat, 16 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://ruralbee.github.io/posts/ctf/ctf_cloudsec/</guid>
+      <description>云安全</description>
+    </item>
+    
   </channel>
 </rss>
