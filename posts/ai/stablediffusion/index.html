@@ -10,7 +10,7 @@
 <meta name="description" content="windows安装">
 <meta name="author" content="Rural Bee">
 <link rel="canonical" href="https://ruralbee.github.io/posts/ai/stablediffusion/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.435fd7d00645589c1a1147f7b5b62b3a2bb66105a0e78ee419ba5010b59305d0.css" integrity="sha256-Q1/X0AZFWJwaEUf3tbYrOiu2YQWg547kGbpQELWTBdA=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.5383ad15d511330a28046e58be749b9993bc009a779247c92ba27718a372d5e8.css" integrity="sha256-U4OtFdURMwooBG5YvnSbmZO8AJp3kkfJK6J3GKNy1eg=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://ruralbee.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://ruralbee.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://ruralbee.github.io/favicon-32x32.png">
@@ -99,7 +99,7 @@
   "keywords": [
     "AI"
   ],
-  "articleBody": "stable diffusion安装 Windows 安装 一、下载conda conda下载地址 二、升级驱动 Geforce Experience 三、conda安装环境 安装git\nconda install git 查看驱动支持的cuda版本\nnvidia-smi onda环境能支持的cudnn最高版本\nconda search cudnn 创建pytorch虚拟环境 conda create -n pytorch python=3.10\rconda activate pytorch\r# https://pytorch.org/get-started/locally/\rconda install pytorch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 pytorch-cuda=11.7 -c pytorch -c nvidia\rconda install cudnn=8.9.2.26 #版本为上述查询的结果 四、conda安装环境 stable-diffusion下载\ngit clone https://github.com/AUTOMATIC1111/stable-diffusion-webui stable-diffusion依赖安装 conda create --name sdw --clone pytorch\rconda activate sdw\rpip config set global.index-url https://mirrors.aliyun.com/pypi/simple/\rcd stable-diffusion-webui\rpip install -r requirements.txt pip install clip\rpip install open_clip_torch\rpip install xformer 下载模型 模型下载地址（无需科学上网） https://aigccafe.net/ 模型存放路径\nmodels\\Stable-diffusion 下载openai库 https://huggingface.co/openai/clip-vit-large-patch14/tree/main 存放路径stable-diffusion-webui/openai如果不存在就创建一个openai文件夹 修改启动脚本 @echo off\rset PYTHON=\rset GIT=\rset VENV_DIR=-\rset COMMANDLINE_ARGS=--lowvram --precision full --no-half\rcall webui.bat 启动脚本程序 ./webui-user.bat 参考文章 https://zhuanlan.zhihu.com/p/632376598 ",
+  "articleBody": "stable diffusion安装 Windows 安装 一、下载conda conda下载地址 二、升级驱动 Geforce Experience 三、conda安装环境 安装git\nconda install git 查看驱动支持的cuda版本\nnvidia-smi onda环境能支持的cudnn最高版本\nconda search cudnn 创建pytorch虚拟环境 conda create -n pytorch python=3.10 conda activate pytorch # https://pytorch.org/get-started/locally/ conda install pytorch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 pytorch-cuda=11.7 -c pytorch -c nvidia conda install cudnn=8.9.2.26 #版本为上述查询的结果 四、conda安装环境 stable-diffusion下载\ngit clone https://github.com/AUTOMATIC1111/stable-diffusion-webui stable-diffusion依赖安装 conda create --name sdw --clone pytorch conda activate sdw pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/ cd stable-diffusion-webui pip install -r requirements.txt pip install clip pip install open_clip_torch pip install xformer 下载模型 模型下载地址（无需科学上网） https://aigccafe.net/ 模型存放路径\nmodels\\Stable-diffusion 下载openai库 https://huggingface.co/openai/clip-vit-large-patch14/tree/main 存放路径stable-diffusion-webui/openai如果不存在就创建一个openai文件夹 修改启动脚本 @echo off set PYTHON= set GIT= set VENV_DIR=- set COMMANDLINE_ARGS=--lowvram --precision full --no-half call webui.bat 启动脚本程序 ./webui-user.bat 参考文章 https://zhuanlan.zhihu.com/p/632376598 ",
   "wordCount" : "108",
   "inLanguage": "zh",
   "datePublished": "2023-12-16T00:00:00Z",
@@ -210,7 +210,7 @@
     <div class="post-description">
       windows安装
     </div>
-    <div class="post-meta"><span title='2023-12-16 00:00:00 +0000 UTC'>十二月 16, 2023</span>&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;Rural Bee&nbsp;|&nbsp;<a href="https://github.com/adityatelange/hugo-PaperMod/tree/exampleSite/content/posts/AI/stablediffusion.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2023-12-16 00:00:00 +0000 UTC'>十二月 16, 2023</span>&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;Rural Bee
 
 </div>
   </header> <aside id="toc-container" class="toc-container wide">
@@ -326,27 +326,27 @@
 <li>onda环境能支持的cudnn最高版本<br>
 <code>conda search cudnn</code></li>
 <li>创建pytorch虚拟环境
-<pre tabindex="0"><code>conda create -n pytorch python=3.10
-conda activate pytorch
-# https://pytorch.org/get-started/locally/
-conda install pytorch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 pytorch-cuda=11.7 -c pytorch -c nvidia
-conda install cudnn=8.9.2.26  #版本为上述查询的结果
-</code></pre></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">conda create -n pytorch python=3.10
+</span></span><span class="line"><span class="cl">conda activate pytorch
+</span></span><span class="line"><span class="cl"># https://pytorch.org/get-started/locally/
+</span></span><span class="line"><span class="cl">conda install pytorch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 pytorch-cuda=11.7 -c pytorch -c nvidia
+</span></span><span class="line"><span class="cl">conda install cudnn=8.9.2.26  #版本为上述查询的结果
+</span></span></code></pre></div></li>
 </ol>
 <h3 id="四conda安装环境">四、conda安装环境<a hidden class="anchor" aria-hidden="true" href="#四conda安装环境">#</a></h3>
 <ol>
 <li>stable-diffusion下载<br>
 <code>git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui</code></li>
 <li>stable-diffusion依赖安装
-<pre tabindex="0"><code>conda create --name sdw --clone pytorch
-conda activate sdw
-pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/
-cd stable-diffusion-webui
-pip install -r requirements.txt 
-pip install clip
-pip install open_clip_torch
-pip install xformer
-</code></pre></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">conda create --name sdw --clone pytorch
+</span></span><span class="line"><span class="cl">conda activate sdw
+</span></span><span class="line"><span class="cl">pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/
+</span></span><span class="line"><span class="cl">cd stable-diffusion-webui
+</span></span><span class="line"><span class="cl">pip install -r requirements.txt 
+</span></span><span class="line"><span class="cl">pip install clip
+</span></span><span class="line"><span class="cl">pip install open_clip_torch
+</span></span><span class="line"><span class="cl">pip install xformer
+</span></span></code></pre></div></li>
 <li>下载模型
 <ol>
 <li>模型下载地址（无需科学上网）
@@ -359,14 +359,14 @@ pip install xformer
 </ol>
 </li>
 <li>修改启动脚本
-<pre tabindex="0"><code>@echo off
-
-set PYTHON=
-set GIT=
-set VENV_DIR=-
-set COMMANDLINE_ARGS=--lowvram --precision full --no-half
-call webui.bat
-</code></pre></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">@echo off
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">set PYTHON=
+</span></span><span class="line"><span class="cl">set GIT=
+</span></span><span class="line"><span class="cl">set VENV_DIR=-
+</span></span><span class="line"><span class="cl">set COMMANDLINE_ARGS=--lowvram --precision full --no-half
+</span></span><span class="line"><span class="cl">call webui.bat
+</span></span></code></pre></div></li>
 <li>启动脚本程序
 <code>./webui-user.bat</code></li>
 </ol>
