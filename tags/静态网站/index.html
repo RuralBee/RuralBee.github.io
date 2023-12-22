@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>云安全 | Rural Blog</title>
+<title>静态网站 | Rural Blog</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="Theme PaperMod">
-<link rel="canonical" href="https://ruralbee.github.io/tags/%E4%BA%91%E5%AE%89%E5%85%A8/">
+<link rel="canonical" href="https://ruralbee.github.io/tags/%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.5383ad15d511330a28046e58be749b9993bc009a779247c92ba27718a372d5e8.css" integrity="sha256-U4OtFdURMwooBG5YvnSbmZO8AJp3kkfJK6J3GKNy1eg=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://ruralbee.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://ruralbee.github.io/favicon-16x16.png">
@@ -18,8 +18,8 @@
 <link rel="mask-icon" href="https://ruralbee.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://ruralbee.github.io/tags/%E4%BA%91%E5%AE%89%E5%85%A8/index.xml">
-<link rel="alternate" hreflang="zh" href="https://ruralbee.github.io/tags/%E4%BA%91%E5%AE%89%E5%85%A8/">
+<link rel="alternate" type="application/rss+xml" href="https://ruralbee.github.io/tags/%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/index.xml">
+<link rel="alternate" hreflang="zh" href="https://ruralbee.github.io/tags/%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/">
 <noscript>
     <style>
         #theme-toggle,
@@ -56,15 +56,15 @@
         }
 
     </style>
-</noscript><meta property="og:title" content="云安全" />
+</noscript><meta property="og:title" content="静态网站" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://ruralbee.github.io/tags/%E4%BA%91%E5%AE%89%E5%85%A8/" /><meta property="og:image" content="https://ruralbee.github.io/papermod-cover.png"/>
+<meta property="og:url" content="https://ruralbee.github.io/tags/%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/" /><meta property="og:image" content="https://ruralbee.github.io/papermod-cover.png"/>
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://ruralbee.github.io/papermod-cover.png"/>
 
-<meta name="twitter:title" content="云安全"/>
+<meta name="twitter:title" content="静态网站"/>
 <meta name="twitter:description" content=""/>
 
 </head>
@@ -147,8 +147,8 @@
 <main class="main"> 
 <header class="page-header"><div class="breadcrumbs"><a href="https://ruralbee.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://ruralbee.github.io/tags/">Tags</a></div>
   <h1>
-    云安全
-    <a href="/tags/%E4%BA%91%E5%AE%89%E5%85%A8/index.xml" title="RSS" aria-label="RSS">
+    静态网站
+    <a href="/tags/%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/index.xml" title="RSS" aria-label="RSS">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
         stroke-linecap="round" stroke-linejoin="round" height="23">
         <path d="M4 11a9 9 0 0 1 9 9" />
@@ -161,23 +161,14 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2>云安全总结
+    <h2>Hugo静态网站搭建
     </h2>
   </header>
   <div class="entry-content">
-    <p>云安全 Docker Docker安装 curl -fsSL https://get.docker.com/ | sh 或则
-wget -qO- https://get.docker.com/ | sh
-Docker-Compose安装 sudo curl -L &#34;https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)&#34; -o /usr/local/bin/docker-compose sudo chmod &#43;x /usr/local/bin/docker-compose docker-compose --version 判断是否在docker或kubepods cat /proc/1/cgroup #是否有docker或k8s关键字样 ls -al / #是否有.dockerenv文件 mount | grep &#39;/ type&#39; #是否有docker关键字样 特权模式逃逸 启动靶场：
-docker run --rm --privileged=true -it alpine
-判断特权：
-cat /proc/self/status | grep CapEff #是否为0000003fffffffff 或者是 0000001fffffffff
-查看目录：
-fdisk -l #需要找到相对应的编号，这里为3
-特权逃逸：
-mkdir /test &amp;&amp; mount /dev/sda3 /test...</p>
+    <p>windows搭建方法 1. 下载hugo-extend和git hugo git 2. 启动博客系统 创建名字为firstsite的博客系统 hugo new site firstsite git init cd firstsite git submodule add --depth=1 https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod 博客调试与生成 hugo server # 博客调试 hugo -F --cleanDestinationDir #public生成博客 papermod使用 1. 文件基本配置 --- title: &#34;{{ replace .Name &#34;-&#34; &#34; &#34; | title }}&#34; #标题 date: {{ .Date }} #创建时间 lastmod: {{ .Date }} #更新时间 author: [&#34;Sulv&#34;] #作者 categories: - 分类1 - 分类2 tags: - 标签1 - 标签2 description: &#34;&#34; #描述 weight: # 输入1可以顶置文章，用来给文章展示排序，不填就默认按时间排序 slug: &#34;&#34; draft: false # 是否为草稿 comments: true #是否展示评论 showToc: true # 显示目录 TocOpen: true # 自动展开目录 hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等 disableShare: true # 底部不显示分享栏 showbreadcrumbs: true #顶部显示当前路径 cover: image: &#34;&#34; #图片路径：posts/tech/文章1/picture....</p>
   </div>
-  <footer class="entry-footer"><span title='2023-12-16 00:00:00 +0000 UTC'>十二月 16, 2023</span>&nbsp;·&nbsp;2 分钟&nbsp;·&nbsp;Rural Bee</footer>
-  <a class="entry-link" aria-label="post link to 云安全总结" href="https://ruralbee.github.io/posts/ctf/ctf_cloudsec/"></a>
+  <footer class="entry-footer"><span title='2023-12-16 00:00:00 +0000 UTC'>十二月 16, 2023</span>&nbsp;·&nbsp;5 分钟&nbsp;·&nbsp;Rural Bee</footer>
+  <a class="entry-link" aria-label="post link to Hugo静态网站搭建" href="https://ruralbee.github.io/posts/other/hugo/"></a>
 </article>
     </main>
     

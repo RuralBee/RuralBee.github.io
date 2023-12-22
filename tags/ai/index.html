@@ -10,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="Theme PaperMod">
 <link rel="canonical" href="https://ruralbee.github.io/tags/ai/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.435fd7d00645589c1a1147f7b5b62b3a2bb66105a0e78ee419ba5010b59305d0.css" integrity="sha256-Q1/X0AZFWJwaEUf3tbYrOiu2YQWg547kGbpQELWTBdA=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.5383ad15d511330a28046e58be749b9993bc009a779247c92ba27718a372d5e8.css" integrity="sha256-U4OtFdURMwooBG5YvnSbmZO8AJp3kkfJK6J3GKNy1eg=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://ruralbee.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://ruralbee.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://ruralbee.github.io/favicon-32x32.png">
@@ -161,18 +161,6 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2>Hugo静态网站搭建
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>windows搭建方法 下载hugo-extend和git hugo git 使用步骤 创建名字为firstsite的博客系统 hugo new site firstsitegit initcd firstsitegit submodule add --depth=1 https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod 博客调试与生成 hugo server # 博客调试hugo -F --cleanDestinationDir #public生成博客 文件基本配置 ---title: &#34;{{ replace .Name &#34;-&#34; &#34; &#34; | title }}&#34; #标题date: {{ .Date }} #创建时间lastmod: {{ .Date }} #更新时间author: [&#34;Sulv&#34;] #作者categories: - 分类1- 分类2tags: - 标签1- 标签2description: &#34;&#34; #描述weight: # 输入1可以顶置文章，用来给文章展示排序，不填就默认按时间排序slug: &#34;&#34;draft: false # 是否为草稿comments: true #是否展示评论showToc: true # 显示目录TocOpen: true # 自动展开目录hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等disableShare: true # 底部不显示分享栏showbreadcrumbs: true #顶部显示当前路径cover:image: &#34;&#34; #图片路径：posts/tech/文章1/picture....</p>
-  </div>
-  <footer class="entry-footer"><span title='2023-12-16 00:00:00 +0000 UTC'>十二月 16, 2023</span>&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;Rural Bee</footer>
-  <a class="entry-link" aria-label="post link to Hugo静态网站搭建" href="https://ruralbee.github.io/posts/other/hugo/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
     <h2>Stable Diffusion安装
     </h2>
   </header>
@@ -180,8 +168,8 @@
     <p>stable diffusion安装 Windows 安装 一、下载conda conda下载地址 二、升级驱动 Geforce Experience 三、conda安装环境 安装git
 conda install git 查看驱动支持的cuda版本
 nvidia-smi onda环境能支持的cudnn最高版本
-conda search cudnn 创建pytorch虚拟环境 conda create -n pytorch python=3.10conda activate pytorch# https://pytorch.org/get-started/locally/conda install pytorch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 pytorch-cuda=11.7 -c pytorch -c nvidiaconda install cudnn=8.9.2.26 #版本为上述查询的结果 四、conda安装环境 stable-diffusion下载
-git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui stable-diffusion依赖安装 conda create --name sdw --clone pytorchconda activate sdwpip config set global.index-url https://mirrors.aliyun.com/pypi/simple/cd stable-diffusion-webuipip install -r requirements....</p>
+conda search cudnn 创建pytorch虚拟环境 conda create -n pytorch python=3.10 conda activate pytorch # https://pytorch.org/get-started/locally/ conda install pytorch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 pytorch-cuda=11.7 -c pytorch -c nvidia conda install cudnn=8.9.2.26 #版本为上述查询的结果 四、conda安装环境 stable-diffusion下载
+git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui stable-diffusion依赖安装 conda create --name sdw --clone pytorch conda activate sdw pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/ cd stable-diffusion-webui pip install -r requirements....</p>
   </div>
   <footer class="entry-footer"><span title='2023-12-16 00:00:00 +0000 UTC'>十二月 16, 2023</span>&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;Rural Bee</footer>
   <a class="entry-link" aria-label="post link to Stable Diffusion安装" href="https://ruralbee.github.io/posts/ai/stablediffusion/"></a>

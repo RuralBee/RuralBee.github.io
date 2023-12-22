@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://ruralbee.github.io/sitemap.xml
